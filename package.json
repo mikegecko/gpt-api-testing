@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "dev": ""
+    "dev": "concurrently \"nodemon server.js\" \"npm run start:client\"",
+    "start:client": "cd client && npm run"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
