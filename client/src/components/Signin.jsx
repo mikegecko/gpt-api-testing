@@ -1,5 +1,6 @@
 import axios from "axios";
-
+import { useState } from "react";
+import {login} from "../utils/api"
 /*
   This example requires some changes to your config:
   
@@ -16,9 +17,16 @@ import axios from "axios";
 */
 export default function Signin() {
 
+    const [loginInfo, setLoginInfo] = useState({email: "", password: ""});
+
     const handleLogin = (e) => {
         e.preventDefault();
-        axios.post()
+        //const res = login(loginInfo);
+        //console.log(loginInfo);
+    }
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setLoginInfo({...loginInfo, [name]: value});
     }
 
     return (
@@ -44,7 +52,7 @@ export default function Signin() {
           </div>
   
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6" action="#" method="POST" onSubmit={handleLogin}>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                   Email address
@@ -57,6 +65,7 @@ export default function Signin() {
                     autoComplete="email"
                     required
                     className="block w-full rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -80,6 +89,7 @@ export default function Signin() {
                     autoComplete="current-password"
                     required
                     className="block w-full rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    onChange={handleChange}
                   />
                 </div>
               </div>
