@@ -13,12 +13,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routers
 const indexRouter = require('./routes/index');
+const authRouter = require('./routes/auth');
 
 // Routes
-app.get('/', (req, res) => {
-  res.send('Hello, API!');
-});
-app.use('/api', indexRouter);
+app.use('/', indexRouter);
+app.use('/auth')
 
 // Start the server
 app.listen(port, () => {
