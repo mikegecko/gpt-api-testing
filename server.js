@@ -20,7 +20,6 @@ app.get('/', (req, res) => {
 });
 app.use('/api', indexRouter);
 
-
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

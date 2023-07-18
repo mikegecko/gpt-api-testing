@@ -3,14 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node server.js",
+    "dev": ""
   },
   "dependencies": {
     "body-parser": "^1.20.2",
+    "concurrently": "^8.2.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "morgan": "~1.9.1",
+    "nodemon": "^3.0.1",
     "path": "^0.12.7"
   }
 }
