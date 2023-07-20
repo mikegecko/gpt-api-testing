@@ -17,7 +17,7 @@ const authRouter = require('./routes/auth');
 
 // Routes
 app.use('/', indexRouter);
-app.use('/auth')
+app.use('/auth', authRouter);
 
 // Start the server
 app.listen(port, () => {
