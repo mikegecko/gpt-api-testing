@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import {login} from "../utils/api"
+import { router } from "../main";
 /*
   This example requires some changes to your config:
   
@@ -21,8 +22,12 @@ export default function Signin() {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        //const res = login(loginInfo);
+        //const res = login(loginInfo.username, loginInfo.password);
         //console.log(loginInfo);
+        //res.then((data) => {console.log(data); data.success ? router.navigate('/dashboard') : console.log(data.message)}).catch((err) => console.log(err));
+        setLoginInfo({username: "", password: ""});
+        //Remove this and uncomment above once API is ready
+        router.navigate('/dashboard');
     }
     const handleChange = (e) => {
         const {name, value} = e.target;

@@ -4,9 +4,10 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Root from './Routes/Root'
 import Login from './Routes/Login'
+import Dashboard from './Routes/Dashboard'
 
-
-const router = createBrowserRouter([
+//Add in error elements & loaders
+export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "/auth/login",
     element: <Login />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   }
 ]);
 
