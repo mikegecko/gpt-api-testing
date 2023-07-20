@@ -15,18 +15,23 @@ ________________________________________________
     ____________________________________________
         Client
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-    - Setup mongoDB for user storage
-    🟢 Axios request to gpt api
-    🟢 Basic ui
+    🔴 Setup mongoDB for user storage
+    🟠 Axios request to gpt api
+    🟢 Basic ui:
+        ✅ Home
+        ✅ Signin
+        🟢 Dashboard
     - Page model:[home page -> sign in page -> dashboard]
     - Routes:[
-        gpt-testing.com/home - default landing page
+        gpt-testing.com/home - default landing page (product, features, marketplace, company, navs should either scroll page to relavent section or navigate to correct page)
         gpt-testing.com/auth/login - sign in page
-        gpt-tesing.com/dashboard - dashboard after sign in
+        gpt-tesing.com/dashboard - dashboard after sign in (SPA will hold convos, settings, etc.)
     ]
     ____________________________________________
         Server
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    - Setup mongoose and mongoDB
+    - Add controller methods
     - Add Routers
     - Model storage for users & messages
     - JWT auth?
