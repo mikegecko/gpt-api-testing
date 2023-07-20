@@ -30,7 +30,7 @@ ________________________________________________
     ____________________________________________
         Server
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-    - Setup mongoose and mongoDB
+    ✅ Setup mongoose and mongoDB
     - Add controller methods
     - Add Routers
     - Model storage for users & messages
