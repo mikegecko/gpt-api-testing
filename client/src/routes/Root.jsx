@@ -20,7 +20,6 @@ export default function Root() {
 
     return(
         <Box display='flex' height='100vh' width='100vw' flexDirection='column' overflow='hidden' >  
-            <Background />
             <Box zIndex={10} height='20' background={bg_header} display='flex' alignItems='center' justifyContent='space-between'  >
                 <Box display={{base: 'none', lg: 'flex'}} alignItems='center' width='10%' ml={8} >
                     <IconButton onClick={toggleColorMode} background={bg_button} aria-label="color mode" icon={<QuestionOutlineIcon />} />
