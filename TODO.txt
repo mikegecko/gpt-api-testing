@@ -18,8 +18,8 @@ ________________________________________________
     🔴 Setup mongoDB for user storage
     🟠 Axios request to gpt api
     🟢 Basic ui:
-        ✅ Home
-        ✅ Signin
+        🟢 Home
+        🟢 Signin
         🟢 Dashboard
     - Page model:[home page -> sign in page -> dashboard]
     - Routes:[
@@ -30,7 +30,6 @@ ________________________________________________
     ____________________________________________
         Server
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-    ✅ Setup mongoose and mongoDB
     - Add controller methods
     - Add Routers
     - Model storage for users & messages
@@ -47,3 +46,5 @@ ________________________________________________
 ________________________________________________
               COMPLETED FEATURES/TASKS
 ________________________________________________
+
+    ✅ Setup mongoose and mongoDB
