@@ -6,8 +6,10 @@ import Root from './routes/Root'
 import Login from './routes/Login'
 import Dashboard from './routes/Dashboard'
 import ErrorPage from './routes/ErrorPage'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
 import theme from './utils/theme'
+// Supports weights 100-900
+import '@fontsource-variable/inter';
 
 //Add in error elements & loaders
 export const router = createBrowserRouter([
@@ -31,6 +33,7 @@ export const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <RouterProvider router={router} />
     </ChakraProvider>
   </React.StrictMode>,
