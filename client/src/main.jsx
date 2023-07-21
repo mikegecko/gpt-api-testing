@@ -2,10 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Root from './Routes/Root'
-import Login from './Routes/Login'
-import Dashboard from './Routes/Dashboard'
-import ErrorPage from './Routes/ErrorPage'
+import Root from './routes/Root'
+import Login from './routes/Login'
+import Dashboard from './routes/Dashboard'
+import ErrorPage from './routes/ErrorPage'
+import { ChakraProvider } from '@chakra-ui/react'
+import theme from './utils/theme'
 
 //Add in error elements & loaders
 export const router = createBrowserRouter([
@@ -28,6 +30,8 @@ export const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ChakraProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ChakraProvider>
   </React.StrictMode>,
 )
