@@ -4,14 +4,21 @@ const bodyParser = require('body-parser');
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const path = require("path");
+const cors = require('cors');
 require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
+// app.use(cors({
+//   origin: '*', // Change to origin: ['https://example.com', 'https://another.example.com']
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+// }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(logger("dev"));
 
 //Routers
 const indexRouter = require('./routes/index');
@@ -23,7 +30,7 @@ db_connect();
 
 // Routes
 app.use('/', indexRouter);
-app.use('/auth', authRouter);
+app.use('/api/auth', authRouter);
 
 // Start the server
 app.listen(port, () => {
