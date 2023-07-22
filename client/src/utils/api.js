@@ -30,3 +30,7 @@ export const createUser = async (username, password) => {
     console.error(error);
   }
 };
+
+export const logout = async () => {
+  localStorage.removeItem("gptapi-token");
+};

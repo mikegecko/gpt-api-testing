@@ -19,17 +19,41 @@ module.exports = {
     },
     loginUser: async (req, res, next) => {
         try{
-
+            const {username, password} = req.body;
+            const user = await User.findOne({username});
+            if(!username || !password){
+                return res.status(401).json({success: false, message: 'Please provide username and password'});
+            }
+            if(!process.env.JWT_SECRET){
+                return res.status(500).json({success: false, message: 'Internal server error'});
+            }
+            if(!user){
+                return res.status(401).json({success: false, message: 'User not found'});
+            }
+            if(user && bcrypt.compareSync(password, user.password)){
+                const token = jwt.sign({
+                    id: user._id,
+                    username: user.username,
+                    isAdmin: user.isAdmin,
+                    email: user.email,
+                    name:  user.name,
+                    date:  user.date,
+                }, process.env.JWT_SECRET, {expiresIn: '1h'});
+                res.json({success: true, uid:user._id, username: user.username, isAdmin: user.isAdmin, message: 'User logged in', token});
+            }
+            else{
+                return res.status(401).json({success: false, message: 'Incorrect username or password'});
+            }
         }
         catch(err){
             return next(error);
         }
     },
     logoutUser: async (req, res, next) => {
-        try{
-
-        }
-        catch(err){
+        try {
+            //Destroy the token
+            res.json({success: true, message: 'User logged out'});
+        } catch (error) {
             return next(error);
         }
     },
