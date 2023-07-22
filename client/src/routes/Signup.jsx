@@ -31,7 +31,7 @@ export default function Signup() {
     return(
         <Box>
             <Box display="flex" flexDir='column' justifyContent="center" alignItems="center" height="100vh" width="100vw">
-            <IconButton icon={<QuestionOutlineIcon />} />
+            <IconButton as='a' href='/' aria-label='Home' icon={<QuestionOutlineIcon />} />
             <Heading mt={8} as='h1' fontSize='4xl' >Create a new account</Heading>
             <Box width='50%' mt={12}>
                 <form onSubmit={handleSubmit} method="POST">
