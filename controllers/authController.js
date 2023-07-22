@@ -19,9 +19,9 @@ module.exports = {
     },
     loginUser: async (req, res, next) => {
         try{
-            const {username, password} = req.body;
-            const user = await User.findOne({username});
-            if(!username || !password){
+            const {email, password} = req.body;
+            const user = await User.findOne({email});
+            if(!email || !password){
                 return res.status(401).json({success: false, message: 'Please provide username and password'});
             }
             if(!process.env.JWT_SECRET){
@@ -33,13 +33,10 @@ module.exports = {
             if(user && bcrypt.compareSync(password, user.password)){
                 const token = jwt.sign({
                     id: user._id,
-                    username: user.username,
-                    isAdmin: user.isAdmin,
                     email: user.email,
-                    name:  user.name,
                     date:  user.date,
                 }, process.env.JWT_SECRET, {expiresIn: '1h'});
-                res.json({success: true, uid:user._id, username: user.username, isAdmin: user.isAdmin, message: 'User logged in', token});
+                res.json({success: true, uid:user._id, email: user.email, message: 'User logged in', token});
             }
             else{
                 return res.status(401).json({success: false, message: 'Incorrect username or password'});

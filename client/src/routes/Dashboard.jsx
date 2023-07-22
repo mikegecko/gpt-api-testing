@@ -19,8 +19,7 @@ export async function dashboardLoader () {
     router.navigate('/auth/login');
     }
     if(jwt){
-    //TODO: Use success and status to determine if token is valid
-    verify(localStorage.getItem('gptapi-token')).then((res) => {res.success ? router.navigate('/') : router.navigate('/auth/login')}).catch(err => { router.navigate('/auth/login'); console.log(err)})
+    verify(localStorage.getItem('gptapi-token')).then((res) => {res.success ? console.log("Token is valid") : router.navigate('/auth/login')}).catch(err => { router.navigate('/auth/login'); console.log(err)})
     }
     return null;
 }
