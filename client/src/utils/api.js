@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 export const login = async (email, password) => {
     try {
@@ -46,3 +47,8 @@ export const verify = async (token) => {
 export const logout = async () => {
   localStorage.removeItem("gptapi-token");
 };
+
+export const decodeToken = async (token) => {
+  const decoded = jwtDecode(token);
+  return decoded;
+}
