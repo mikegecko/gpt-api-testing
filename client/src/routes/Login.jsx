@@ -14,7 +14,7 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         const res = login(loginInfo.email, loginInfo.password);
-        res.then((data) => {console.log(data); data.success ? router.navigate('/') : console.log(data.message)}).catch((err) => console.log(err));
+        res.then((data) => {console.log(data); data.success ? router.navigate('/dashboard') : console.log(data.message)}).catch((err) => console.log(err));
         setLoginInfo({email: "", password: ""});
     }
     // useEffect(() => {
