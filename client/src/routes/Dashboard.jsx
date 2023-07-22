@@ -1,12 +1,19 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import { router } from "../main";
-import { verify } from "../utils/api";
+import { logout, verify } from "../utils/api";
 
 export default function Dashboard() {
+
+
+    const handleLogout = () => {
+        logout();
+    }
+
     return(
         <Box display='flex' height='100vh' >
             <Box flex='1'>
                 <h1>Dashboard</h1>
+                <Button onClick={handleLogout}>Logout</Button>
             </Box>
         </Box>
     )
