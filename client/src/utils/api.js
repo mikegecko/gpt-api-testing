@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const login = async (username, password) => {
+export const login = async (email, password) => {
     try {
-      const response = await axios.post("/auth/login", {
-        username,
+      const response = await axios.post("/api/auth/login", {
+        email,
         password,
       });
       localStorage.setItem("gptapi-token", response.data.token);
@@ -18,13 +18,13 @@ export const login = async (username, password) => {
     }
 };
 
-export const createUser = async (username, password) => {
+export const createUser = async (email, password) => {
   try{
-    const response = await axios.post("/auth/signup", {
-      username,
+    const response = await axios.post("/api/auth/signup", {
+      email,
       password,
     });
-    return response.data;
+    return response;
   }
   catch(error){
     console.error(error);
