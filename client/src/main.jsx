@@ -10,6 +10,7 @@ import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
 import theme from './utils/theme'
 // Supports weights 100-900
 import '@fontsource-variable/inter';
+import Signup from './routes/Signup'
 
 //Add in error elements & loaders
 export const router = createBrowserRouter([
@@ -21,6 +22,11 @@ export const router = createBrowserRouter([
   {
     path: "/auth/login",
     element: <Login />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/auth/signup",
+    element: <Signup />,
     errorElement: <ErrorPage />,
   },
   {

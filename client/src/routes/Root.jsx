@@ -9,14 +9,12 @@ export default function Root() {
 
     const {colorMode, toggleColorMode} = useColorMode();
 
-
     const bg_circle = useColorModeValue('brand.800', 'brand.100');
     const bg_header = useColorModeValue('brand.400', 'brand.600');
     const bg_text = useColorModeValue('gray.800', 'gray.200');
     const bg_button = useColorModeValue('white', ' brand.800');
 
     
-
 
     return(
         <Box display='flex' height='100vh' width='100vw' flexDirection='column' overflow='hidden' >  
@@ -28,7 +26,7 @@ export default function Root() {
                     <Link fontWeight='semibold' href="#">Product</Link>
                     <Link fontWeight='semibold' href="#">Features</Link>
                     <Link fontWeight='semibold' href="#">FAQ</Link>
-                    <Link fontWeight='semibold' href="#">Company</Link>
+                    <Link fontWeight='semibold' href="/mp">Company</Link>
                 </Box>
                 <Box display={{base: 'none', lg: 'flex'}} justifyContent='flex-end' width='10%' mr={8}>
                     <Button color={bg_text} variant='link' as='a' rightIcon={<ArrowForwardIcon />} href="/auth/login">Log in</Button>

@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import _ from 'lodash';
 import { Box, useColorModeValue } from "@chakra-ui/react";
 
-export default function Background() {
-
-    const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
+export default function Background(props) {
+    const [mousePosition, setMousePosition] = useState({x:0, y:0});
     const [backgroundTranslate, setBackgroundTranslate] = useState({x: 0, y: 0});
     const bg_circle = useColorModeValue('brand.800', 'brand.100');
 
@@ -40,8 +39,7 @@ export default function Background() {
     
 
     return(
-        
-        <Box onMouseMove={handleMouseMove} sx={{ overflow: 'hidden', zIndex: 0 ,position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: `radial-gradient(circle, ${bg_circle} 2px, rgba(0, 0, 0, 0) 3px);`, backgroundSize: '60px 60px', transform: `translate(${backgroundTranslate.x}px, ${backgroundTranslate.y}px)`, transition: 'transform 0.2s ease'}}>
+        <Box sx={{ overflow: 'hidden', zIndex: 0 ,position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: `radial-gradient(circle, ${bg_circle} 2px, rgba(0, 0, 0, 0) 3px);`, backgroundSize: '60px 60px', transform: `translate(${backgroundTranslate.x}px, ${backgroundTranslate.y}px)`, transition: 'transform 0.2s ease'}}>
         </Box>
     )
 }
