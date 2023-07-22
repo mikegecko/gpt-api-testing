@@ -1,5 +1,5 @@
 import { QuestionOutlineIcon } from "@chakra-ui/icons";
-import { Box, Button, Checkbox, FormControl, Heading, IconButton, Input, Link } from "@chakra-ui/react";
+import { Box, Button, FormControl, Heading, IconButton, Input, Link } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { createUser } from "../utils/api";
 import { router } from "../main";
