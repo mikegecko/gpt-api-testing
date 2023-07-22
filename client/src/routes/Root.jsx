@@ -40,7 +40,7 @@ export default function Root() {
                 <Text  fontSize={{base: '4xl', md: '4xl', lg: '6xl'}} fontWeight='bold' textAlign='center'>
                     Welcome to the future of AI
                 </Text>
-                <Text fontSize={{base: 'xl', md: 'xl', lg: '2xl'}} fontWeight='300' textAlign='center' mb={2}>
+                <Text fontSize={{base: 'xl', md: 'xl', lg: '2xl'}} fontWeight='300' textAlign='center' mb={4}>
                     AI is changing how business works, lets change it together
                 </Text>
                 <Box>
