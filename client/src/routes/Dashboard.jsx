@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { router } from "../main";
+import { verify } from "../utils/api";
 
 export default function Dashboard() {
     return(
