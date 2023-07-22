@@ -31,6 +31,18 @@ export const createUser = async (username, password) => {
   }
 };
 
+export const verify = async (token) => {
+  try {
+    const headers = { Authorization: `Bearer ${token}` };
+    const response = await axios.get("/api/auth/verify", {
+      headers,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const logout = async () => {
   localStorage.removeItem("gptapi-token");
 };

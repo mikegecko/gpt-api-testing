@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/react";
+import { router } from "../main";
 
 export default function Dashboard() {
     return(
@@ -11,5 +12,14 @@ export default function Dashboard() {
 }
 
 export async function dashboardLoader () {
+    //Redirects to login if no token is found
+    const jwt = localStorage.getItem('gptapi-token');
+    if(!jwt){
+    router.navigate('/auth/login');
+    }
+    if(jwt){
+    //TODO: Use success and status to determine if token is valid
+    verify(localStorage.getItem('gptapi-token')).then((res) => {res.success ? router.navigate('/') : router.navigate('/auth/login')}).catch(err => { router.navigate('/auth/login'); console.log(err)})
+    }
     return null;
 }

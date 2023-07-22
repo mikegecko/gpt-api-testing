@@ -4,7 +4,7 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Root from './routes/Root'
 import Login from './routes/Login'
-import Dashboard from './routes/Dashboard'
+import Dashboard, { dashboardLoader } from './routes/Dashboard'
 import ErrorPage from './routes/ErrorPage'
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
 import theme from './utils/theme'
@@ -33,6 +33,7 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
     errorElement: <ErrorPage />,
+    loader: dashboardLoader,
   }
 ]);
 
