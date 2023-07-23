@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Root from './routes/Root'
+import Root, { rootLoader } from './routes/Root'
 import Login from './routes/Login'
 import Dashboard, { dashboardLoader } from './routes/Dashboard'
 import ErrorPage from './routes/ErrorPage'
@@ -18,6 +18,7 @@ export const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
+    loader: rootLoader,
   },
   {
     path: "/auth/login",

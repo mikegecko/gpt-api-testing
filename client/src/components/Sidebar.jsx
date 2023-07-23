@@ -14,7 +14,7 @@ export default function Sidebar() {
       <motion.aside initial={{ x: '-100%' }} animate={{ x: isOpen ? '100%' : '0%', display: isOpen ? 'none' : 'block' }} exit={{ x: '-100%', transition: { duration: 0.2 } }} transition={{ duration: 0.2 }} style={{ zIndex: 0, width: '300px', position: 'relative'}}>
         <Box maxW='300px' minW='250px' width='100%' height='100%' display='flex' flexDir='column' background='brand.600'>
                 <Box m={2} display='flex' flexDir='row' alignItems='center'>
-                <IconButton icon={<QuestionOutlineIcon />} />
+                <IconButton as='a' href="/" icon={<QuestionOutlineIcon />} />
                 <Heading size='md' ml={2} mr={2}>Sidebar</Heading>
                 </Box>
                 <Box display='flex' gap={2} m={2}>

@@ -18,6 +18,7 @@ ________________________________________________
     - Add style, product images and cool actions to page
     - Truncate long convos > 4096 tokens to prevent API errors
     🟡 Light/dark mode ui pass
+    - Mobile view pass
     ✅ Pass gpt apikey through token -> This is temporary, rewrite so express server acts as a proxy for all requests requiring apikey
     🟢 Pages:
         🟢 Home 
@@ -57,7 +58,7 @@ ________________________________________________
                      BUGS
 ________________________________________________
 
-
+    - I dont like how the sidebar on the dashboard jumps out when it first loads
 
 
 ________________________________________________
