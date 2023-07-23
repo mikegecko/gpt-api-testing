@@ -10,7 +10,7 @@ export default function Dashboard() {
     const [input, setInput] = useState("");
     const [response, setResponse] = useState(null);
     const [messages, setMessages] = useState([]);
-
+    const systemMessage = "You are a narrator in a text-based adventure game. Begin by asking the player for their name, class [mage, knight, assasin, archer] and where they would like to begin. When a user does an action add any of the following to the response [-10 health] [+10 health] [-10 mana] [+10 mana] [+10 gold] [-10 gold] [+10 stamina] [-10 stamina]."
     const tokenInfoString = JSON.stringify(tokenInfo);
 
     const handleLogout = () => {
@@ -22,7 +22,8 @@ export default function Dashboard() {
         setMessages([...messages, formattedMessage]);
     }
 
-    const handleSend = () => { 
+    const handleSend = (e) => { 
+        e.preventDefault();
         addUserMessage(input);
         //gptChatCompletion(messages, tokenInfo.apiKey).then(res => {addResponseToMessage(res); console.log(res);});
         setInput("");
@@ -40,7 +41,7 @@ export default function Dashboard() {
         decodeToken(jwt).then(res => {setTokenInfo(res);})
 
         const addSystemMessage = () => {
-            setMessages([...messages, {"role": "system", "content": "You are a narrator in a text-based adventure game. Begin by asking the player for their name, class [mage, knight, assasin, archer] and where they would like to begin. Player stats are 100 health, 100 mana, and 100 stamina. Include the stats in every response."}]);
+            setMessages([...messages, {"role": "system", "content": systemMessage}]);
         }
         addSystemMessage();
     },[])
@@ -60,7 +61,7 @@ export default function Dashboard() {
 
     return(
         <Box display='flex' height='100vh' width='100vw' flexDir='row' >
-            <Box width='300px' height='100%' display='flex' flexDir='column' background='brand.800'>
+            <Box maxW='300px' minW='250px' width='300px' height='100%' display='flex' flexDir='column' background='brand.800'>
                 <h1>Sidebar</h1>
                 <Box display='flex' gap={2} p={2}>
                 <Button display='flex' flex='1' variant='outline' leftIcon={<AddIcon />}>New Game</Button>
@@ -77,10 +78,12 @@ export default function Dashboard() {
                 </Box>
                 <Box>
                     <Text textAlign='center'>Total Tokens: { response != null ? response.usage.total_tokens : 0 }/4096 | Prompt Tokens: {response != null ? response.usage.prompt_tokens : 0} | Completion Tokens: {response != null ? response.usage.completion_tokens : 0}</Text>
-                    <Box display='flex' gap='2'm={4} >
-                        <Input onChange={(e) => setInput(e.target.value)} value={input} placeholder="Send message" />
-                        <Button rightIcon={<ArrowForwardIcon />} onClick={handleSend}>Send</Button>
-                    </Box>
+                    <form onSubmit={handleSend} method="POST">
+                        <Box display='flex' gap='2'm={4} >
+                            <Input type="text" variant='filled' onChange={(e) => setInput(e.target.value)} value={input} placeholder="Send message" />
+                            <Button type="submit" rightIcon={<ArrowForwardIcon />}>Send</Button>
+                        </Box>
+                    </form>
                 </Box>
             </Box>
         </Box>
