@@ -24,33 +24,37 @@ export default function Dashboard() {
 
     const handleSend = () => { 
         addUserMessage(input);
+        //gptChatCompletion(messages, tokenInfo.apiKey).then(res => {addResponseToMessage(res); console.log(res);});
         setInput("");
-        gptChatCompletion(messages, tokenInfo.apiKey).then(res => {setResponse(res); console.log(res);})
     }
 
+    const addResponseToMessage = (res) => {
+        if(res != null){
+            const message = res.choices[0].message;
+            setMessages([...messages, message]);
+        }
+    }
 
     useEffect(() => {
         const jwt = localStorage.getItem('gptapi-token');
         decodeToken(jwt).then(res => {setTokenInfo(res);})
 
         const addSystemMessage = () => {
-            setMessages([...messages, {"role": "system", "content": "You are a evil helpful assistant who only speaks like a gangster from the hood."}]);
+            setMessages([...messages, {"role": "system", "content": "You are a narrator in a text-based adventure game. Begin by asking the player for their name, class [mage, knight, assasin, archer] and where they would like to begin. Player stats are 100 health, 100 mana, and 100 stamina. Include the stats in every response."}]);
         }
         addSystemMessage();
     },[])
-    // useEffect(() => {
-    //     console.log(tokenInfo);
-    // }, [tokenInfo])
+
     useEffect(() => {
-        const addResponseMessage = () => {
-            if(response != null){
-                const message = response.choices[0].message;
-                setMessages([...messages, message]);
-            }
-        }   
-        addResponseMessage();
-    }, [response])
-    useEffect(() => {
+        if (messages.length > 0 && messages[messages.length - 1].role === "user") {
+            // Only trigger the API call when the user's input is added to messages
+            const userMessage = messages[messages.length - 1].content;
+            gptChatCompletion(messages, tokenInfo.apiKey).then(res => {
+              addResponseToMessage(res, userMessage);
+              setResponse(res);
+              console.log(res);
+            });
+          }
         console.log(messages);
     }, [messages])
 
@@ -64,16 +68,19 @@ export default function Dashboard() {
                 </Box>
             </Box>
             <Box display='flex' flexDir='column' width='100%' height='100%'>
-                <Box display='flex' gap={2} p={2} flex='1'>
+                <Box display='flex' gap={2} p={2} flex='1' flexDir='column' overflowY='auto' height='100%'>
                 {messages.map((message, index) => {
                     return(
                         <Text key={index}>{message.role} : {message.content}</Text>
                     )
                 })}
                 </Box>
-                <Box display='flex' gap='2'm={4} >
-                    <Input onChange={(e) => setInput(e.target.value)} value={input} placeholder="Send message" />
-                    <Button rightIcon={<ArrowForwardIcon />} onClick={handleSend}>Send</Button>
+                <Box>
+                    <Text textAlign='center'>Total Tokens: { response != null ? response.usage.total_tokens : 0 }/4096 | Prompt Tokens: {response != null ? response.usage.prompt_tokens : 0} | Completion Tokens: {response != null ? response.usage.completion_tokens : 0}</Text>
+                    <Box display='flex' gap='2'm={4} >
+                        <Input onChange={(e) => setInput(e.target.value)} value={input} placeholder="Send message" />
+                        <Button rightIcon={<ArrowForwardIcon />} onClick={handleSend}>Send</Button>
+                    </Box>
                 </Box>
             </Box>
         </Box>

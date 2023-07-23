@@ -52,7 +52,7 @@ export const decodeToken = async (token) => {
   const decoded = jwtDecode(token);
   return decoded;
 }
-
+// Max context is 4096 tokens at $0.0015 / 1K tokens
 export const gptChatCompletion = async( formattedMessageArray, apiToken ) => {
   try{
     const res = await axios.post('https://api.openai.com/v1/chat/completions',
