@@ -52,3 +52,24 @@ export const decodeToken = async (token) => {
   const decoded = jwtDecode(token);
   return decoded;
 }
+
+export const gptChatCompletion = async( formattedMessageArray, apiToken ) => {
+  try{
+    const res = await axios.post('https://api.openai.com/v1/chat/completions',
+    {
+      model: 'gpt-3.5-turbo',
+      messages: [...formattedMessageArray], //Formatted messages example [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "Hello!"}]
+      temperature: 0.7,
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiToken}`,
+      }
+    }
+    );
+    return res.data;
+  } catch(error) {
+    console.error('Error requesting GPT completion', error);
+  }
+}
