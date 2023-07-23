@@ -61,10 +61,10 @@ export default function Dashboard() {
 
     return(
         <Box display='flex' height='100vh' width='100vw' flexDir='row' >
-            <Box maxW='300px' minW='250px' width='300px' height='100%' display='flex' flexDir='column' background='brand.800'>
+            <Box maxW='300px' minW='250px' width='300px' height='100%' display='flex' flexDir='column' background='brand.600'>
                 <h1>Sidebar</h1>
                 <Box display='flex' gap={2} p={2}>
-                <Button display='flex' flex='1' variant='outline' leftIcon={<AddIcon />}>New Game</Button>
+                <Button display='flex' flex='1' justifyContent='flex-start' variant='outline' gap={2} alignItems='center' leftIcon={<AddIcon />}>New Game</Button>
                 <Button variant='outline'><CloseIcon boxSize={3} /></Button>
                 </Box>
             </Box>
