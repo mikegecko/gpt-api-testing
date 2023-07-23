@@ -13,8 +13,11 @@ ________________________________________________
     Current Tasks
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
     - Ideas:
-       
-
+        - Simple GPT api wrapper with access to system and functions for easy testing without needing to create a whole environment
+        - Stock/News confidence rating - buy/sell a Stock
+        - Text based adventure game
+        - Simple api wrapper with different profiles
+        
     ____________________________________________
         Client
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
