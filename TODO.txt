@@ -58,7 +58,7 @@ ________________________________________________
                      BUGS
 ________________________________________________
 
-    - I dont like how the sidebar on the dashboard jumps out when it first loads
+    ✅ I dont like how the sidebar on the dashboard jumps out when it first loads | Solved: AnimatePresence initialLoad={false}
 
 
 ________________________________________________
