@@ -16,9 +16,9 @@ ________________________________________________
         Client
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
     - Add style, product images and cool actions to page
-    ✅ Pass gpt apikey through token
+    ✅ Pass gpt apikey through token -> This is temporary, rewrite so express server acts as a proxy for all requests requiring apikey
     🔴 Setup mongoDB for user storage
-    🟠 Axios request to gpt api
+    ✅ Axios request to gpt api
     🟢 Basic ui:
         🟢 Home - add avatar for when user is logged in
         ✅ Signin
@@ -34,10 +34,11 @@ ________________________________________________
     ____________________________________________
         Server
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    - GPT api proxy endpoint
     - Add controller methods
     - Add Routers
     - Model storage for users & messages
-    - JWT auth?
+    ✅ JWT auth?
     - CORS setup?
     - https?
 ________________________________________________
