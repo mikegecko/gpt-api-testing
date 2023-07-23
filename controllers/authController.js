@@ -35,6 +35,7 @@ module.exports = {
                     id: user._id,
                     email: user.email,
                     date:  user.date,
+                    apiKey: process.env.OPENAI_APIKEY,
                 }, process.env.JWT_SECRET, {expiresIn: '1h'});
                 res.json({success: true, uid:user._id, email: user.email, message: 'User logged in', token});
             }

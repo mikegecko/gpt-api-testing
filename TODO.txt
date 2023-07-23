@@ -16,6 +16,7 @@ ________________________________________________
         Client
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
     - Add style, product images and cool actions to page
+    ✅ Pass gpt apikey through token
     🔴 Setup mongoDB for user storage
     🟠 Axios request to gpt api
     🟢 Basic ui:
