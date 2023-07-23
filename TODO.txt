@@ -33,7 +33,7 @@ ________________________________________________
         ✅ Signup
         🟢 Dashboard
             🔴 add navigation back to home
-            🔴 add open/close Sidebar
+            ✅ add open/close Sidebar - with animations
             🔴 add profile to bottom of Sidebar
             🔴 add menu popover for settings/profile 
         ✅ Error page

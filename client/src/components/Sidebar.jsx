@@ -8,10 +8,10 @@ export default function Sidebar() {
 
   return (
     <Box height='100%' display='flex'>
-      <IconButton position='absolute' top={'40px'} left={0} m={4} hidden={isOpen} onClick={onToggle} aria-label="Open sidebar" icon={<ArrowRightIcon />} />
+      <IconButton position='absolute' top={'40px'} left={0} m={4} hidden={!isOpen} onClick={onToggle} aria-label="Open sidebar" icon={<ArrowRightIcon />} />
       <AnimatePresence>
-        {isOpen && (
-      <motion.aside initial={{ x: '-100%' }} animate={{ x: isOpen ? '0%' : '-100%', display: isOpen ? 'block' : 'none' }} exit={{ x: '-100%', transition: { duration: 0.2 } }} transition={{ duration: 0.2 }} style={{ zIndex: 0, width: '300px', position: 'relative'}}>
+        {!isOpen && (
+      <motion.aside initial={{ x: '-100%' }} animate={{ x: isOpen ? '100%' : '0%', display: isOpen ? 'none' : 'block' }} exit={{ x: '-100%', transition: { duration: 0.2 } }} transition={{ duration: 0.2 }} style={{ zIndex: 0, width: '300px', position: 'relative'}}>
         <Box maxW='300px' minW='250px' width='100%' height='100%' display='flex' flexDir='column' background='brand.600'>
                 <Box m={2} display='flex' flexDir='row' alignItems='center'>
                 <IconButton icon={<QuestionOutlineIcon />} />
