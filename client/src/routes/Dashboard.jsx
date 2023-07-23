@@ -3,6 +3,7 @@ import { router } from "../main";
 import { decodeToken, gptChatCompletion, logout, verify } from "../utils/api";
 import { useEffect, useState } from "react";
 import { AddIcon, ArrowForwardIcon, CloseIcon } from "@chakra-ui/icons";
+import Sidebar from "../components/Sidebar";
 
 export default function Dashboard() {
 
@@ -61,14 +62,8 @@ export default function Dashboard() {
 
     return(
         <Box display='flex' height='100vh' width='100vw' flexDir='row' >
-            <Box maxW='300px' minW='250px' width='300px' height='100%' display='flex' flexDir='column' background='brand.600'>
-                <h1>Sidebar</h1>
-                <Box display='flex' gap={2} p={2}>
-                <Button display='flex' flex='1' justifyContent='flex-start' variant='outline' gap={2} alignItems='center' leftIcon={<AddIcon />}>New Game</Button>
-                <Button variant='outline'><CloseIcon boxSize={3} /></Button>
-                </Box>
-            </Box>
-            <Box display='flex' flexDir='column' width='100%' height='100%'>
+            <Sidebar />
+            <Box display='flex' flexDir='column' width='100%' height='100%' mr={40} ml={40}>
                 <Box display='flex' gap={2} p={2} flex='1' flexDir='column' overflowY='auto' height='100%'>
                 {messages.map((message, index) => {
                     return(
