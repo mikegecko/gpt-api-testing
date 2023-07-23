@@ -35,7 +35,8 @@ ________________________________________________
         🟢 Dashboard
             🔴 add navigation back to home
             ✅ add open/close Sidebar - with animations
-            🔴 add profile to bottom of Sidebar
+            ✅ add profile to bottom of Sidebar
+            🔴 add profile info from token to sidebar
             🔴 add menu popover for settings/profile 
         ✅ Error page
 
