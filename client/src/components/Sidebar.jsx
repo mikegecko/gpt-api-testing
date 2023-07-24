@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import {
   AddIcon,
   ArrowLeftIcon,
@@ -150,3 +151,7 @@ export default function Sidebar(props) {
     </Box>
   );
 }
+
+Sidebar.propTypes = {
+  tokenInfo: PropTypes.object,
+};
