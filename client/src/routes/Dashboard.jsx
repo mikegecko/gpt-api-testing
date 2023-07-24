@@ -14,10 +14,6 @@ export default function Dashboard() {
     const systemMessage = "You are a narrator in a text-based adventure game. Begin by asking the player for their name, class [mage, knight, assasin, archer] and where they would like to begin. When a user does an action add any of the following to the response [-10 health] [+10 health] [-10 mana] [+10 mana] [+10 gold] [-10 gold] [+10 stamina] [-10 stamina]."
     const tokenInfoString = JSON.stringify(tokenInfo);
 
-    const handleLogout = () => {
-        logout();
-    }
-
     const addUserMessage = (message) => {
         const formattedMessage = { "role": "user", "content": message };
         setMessages([...messages, formattedMessage]);
