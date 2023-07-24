@@ -22,10 +22,21 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { logout } from "../utils/api";
 import { router } from "../main";
+import ProfileModal from "./ProfileModal";
+import { useState } from "react";
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   const { isOpen, onToggle } = useDisclosure();
   const bg_sidebar = useColorModeValue('brand.400', 'brand.600');
+  const tokenInfo = props.tokenInfo;
+  const [profileIsOpen, setProfileIsOpen] = useState(false);
+  const profileOnOpen = () => {
+    setProfileIsOpen(true);
+  };
+
+  const profileOnClose = () => {
+    setProfileIsOpen(false);
+  };
 
   const handleLogout = () => {
     logout();
@@ -123,8 +134,9 @@ export default function Sidebar() {
                     </Box>
                   </MenuButton>
                   <MenuList>
-                    <MenuItem>Profile</MenuItem>
+                    <MenuItem onClick={profileOnOpen}>Profile</MenuItem>
                     <MenuItem>Settings</MenuItem>
+                    <Divider mt={2} mb={2} />
                     <MenuItem onClick={handleLogout}>Logout</MenuItem>
                   </MenuList>
                 </Menu>
@@ -133,6 +145,8 @@ export default function Sidebar() {
           </motion.aside>
         )}
       </AnimatePresence>
+      {/* Modals */}
+      <ProfileModal isOpen={profileIsOpen} onClose={profileOnClose} onOpen={profileOnOpen} tokenInfo={tokenInfo} />
     </Box>
   );
 }

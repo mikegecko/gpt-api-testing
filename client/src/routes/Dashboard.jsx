@@ -12,7 +12,7 @@ export default function Dashboard() {
     const [response, setResponse] = useState(null);
     const [messages, setMessages] = useState([]);
     const systemMessage = "You are a narrator in a text-based adventure game. Begin by asking the player for their name, class [mage, knight, assasin, archer] and where they would like to begin. When a user does an action add any of the following to the response [-10 health] [+10 health] [-10 mana] [+10 mana] [+10 gold] [-10 gold] [+10 stamina] [-10 stamina]."
-    const tokenInfoString = JSON.stringify(tokenInfo);
+    //const tokenInfoString = JSON.stringify(tokenInfo);
 
     const addUserMessage = (message) => {
         const formattedMessage = { "role": "user", "content": message };
@@ -62,13 +62,13 @@ export default function Dashboard() {
           //If messages is too long, truncate it
           if(messages.length > 20){
             setMessages(truncateMessages(messages));
-          };
+          }
         console.log(messages);
     }, [messages])
 
     return(
         <Box display='flex' height='100vh' width='100vw' flexDir='row' >
-            <Sidebar />
+            <Sidebar tokenInfo={tokenInfo} />
             <Box display='flex' flexDir='column' width='100%' height='100%' mr={40} ml={40}>
                 <Box display='flex' gap={2} p={2} flex='1' flexDir='column' overflowY='auto' height='100%'>
                 {messages.map((message, index) => {

@@ -29,7 +29,7 @@ const { db_connect } = require('./utils/db');
 db_connect();
 
 // Routes
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 app.use('/api/auth', authRouter);
 
 // Start the server
