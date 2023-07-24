@@ -1,6 +1,6 @@
+import { PropTypes } from 'prop-types';
 import { Box, Button, Divider, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/react';
-import { Modal, useDisclosure } from "@chakra-ui/react"
-import { useEffect } from 'react';
+import { Modal } from "@chakra-ui/react"
 
 export default function ProfileModal({isOpen, onOpen, onClose, tokenInfo}){
     return(
@@ -31,3 +31,10 @@ export default function ProfileModal({isOpen, onOpen, onClose, tokenInfo}){
         </Box>
     )
 }
+
+ProfileModal.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired,
+    onOpen: PropTypes.func.isRequired,
+    tokenInfo: PropTypes.object
+};

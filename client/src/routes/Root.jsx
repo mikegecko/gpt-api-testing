@@ -1,7 +1,5 @@
-import { React, useState } from 'react';
 import { ArrowForwardIcon, HamburgerIcon, QuestionOutlineIcon } from "@chakra-ui/icons";
 import { Avatar, Box, Button, IconButton, Link, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
-import { useEffect } from "react";
 import Background from '../components/Background';
 import { verify } from '../utils/api';
 import { useLoaderData } from 'react-router-dom';
