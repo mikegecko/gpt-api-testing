@@ -43,7 +43,10 @@ ________________________________________________
             ✅ add open/close Sidebar - with animations
             ✅ add profile to bottom of Sidebar
             🔴 add profile info from token to sidebar
-            🔴 add menu popover for settings/profile 
+            🟢 add menu popover for settings/profile
+                ✅ Logout
+                🔴 settings
+                🔴 profile
         ✅ Error page
 
     - Routes:[
