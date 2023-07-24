@@ -24,6 +24,8 @@ ________________________________________________
     - Add style, product images and cool actions to page
     ✅ Truncate long convos > 4096 tokens to prevent API errors -> find a way to do token based removal instead of slicing array
     🟡 Light/dark mode ui pass
+    - Improve color scheme
+    - Create icon/name for product
     - Mobile view pass
     ✅ Pass gpt apikey through token -> This is temporary, rewrite so express server acts as a proxy for all requests requiring apikey
     🔵 Pages:
@@ -34,8 +36,8 @@ ________________________________________________
             🟡 add FAQ page
             🟡 add company page
             🟡 add pricing page
-            🟡 get started button brings you to ...(idk yet)
-            🟡 improve home page styling
+            🟠 get started button brings you to ...(idk yet)
+            🟠 improve home page styling
         🔵 Signin
             🟡 mobile ui pass
             🟡 light/dark mode pass
@@ -43,7 +45,7 @@ ________________________________________________
             🟡 mobile ui pass
             🟡 light/dark mode pass
         🟢 Dashboard
-            🔴 add navigation back to home
+            ✅ add navigation back to home
             ✅ add open/close Sidebar - with animations
             ✅ add profile to bottom of Sidebar
             🔴 add profile info from token to sidebar
