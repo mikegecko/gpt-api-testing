@@ -32,6 +32,12 @@ export default function Dashboard() {
             setMessages([...messages, message]);
         }
     }
+    // This should be done by tokens not my message length
+    const truncateMessages = (messageArr) => {
+        if(messageArr.length > 20){
+            return messageArr.slice(messageArr.length - 10, messageArr.length);
+        }
+    }
 
     useEffect(() => {
         const jwt = localStorage.getItem('gptapi-token');
@@ -53,6 +59,10 @@ export default function Dashboard() {
               console.log(res);
             });
           }
+          //If messages is too long, truncate it
+          if(messages.length > 20){
+            setMessages(truncateMessages(messages));
+          };
         console.log(messages);
     }, [messages])
 
