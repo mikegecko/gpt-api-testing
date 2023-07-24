@@ -1,8 +1,8 @@
 import { Box, Button, Input, Text } from "@chakra-ui/react";
 import { router } from "../main";
-import { decodeToken, gptChatCompletion, logout, verify } from "../utils/api";
+import { decodeToken, gptChatCompletion, verify } from "../utils/api";
 import { useEffect, useState } from "react";
-import { AddIcon, ArrowForwardIcon, CloseIcon } from "@chakra-ui/icons";
+import { ArrowForwardIcon} from "@chakra-ui/icons";
 import Sidebar from "../components/Sidebar";
 
 export default function Dashboard() {
