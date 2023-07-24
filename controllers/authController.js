@@ -65,17 +65,25 @@ module.exports = {
             if(!process.env.JWT_SECRET){
                 res.status(500).json({success: false, message: 'Internal server error'});
             }
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            if(!decoded){
-                res.status(401).json({success: false, message: 'Unauthorized'});
+            try{
+                const decoded = jwt.verify(token, process.env.JWT_SECRET);
+                if(!decoded){
+                    res.status(401).json({success: false, message: 'Unauthorized'});
+                }
+                const user = await User.findById(decoded.id);
+                if(!user){
+                    res.status(401).json({success: false, message: 'Unauthorized'});
+                }
+                req.user = user;
+                res.json({success: true, message: 'User verified'});
+            } catch(error){
+                if (error.name === 'TokenExpiredError') {
+                    res.status(401).json({ success: false, message: 'Token has expired' });
+                } else {
+                    // For other errors, pass them to the error-handling middleware
+                    return next(error);
+                }
             }
-            const user = await User.findById(decoded.id);
-            if(!user){
-                res.status(401).json({success: false, message: 'Unauthorized'});
-            }
-            req.user = user;
-            res.json({success: true, message: 'User verified'});
-            
         } catch (error) {
             return next(error);
         }

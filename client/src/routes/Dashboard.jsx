@@ -88,7 +88,8 @@ export async function dashboardLoader () {
     router.navigate('/auth/login');
     }
     if(jwt){
-    verify(localStorage.getItem('gptapi-token')).then((res) => {res.success ? console.log("Token is valid") : router.navigate('/auth/login')}).catch(err => { router.navigate('/auth/login'); console.log(err)})
+        //FIX: res.success is undefined when token is expired
+        verify(localStorage.getItem('gptapi-token')).then((res) => {res.success ? console.log("Token is valid") : router.navigate('/auth/login')}).catch(err => { router.navigate('/auth/login'); console.log(err)})
     }
     return null;
 }

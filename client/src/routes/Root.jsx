@@ -68,7 +68,23 @@ export async function rootLoader () {
     if(jwt){
     try {
         const res = await verify(localStorage.getItem('gptapi-token'));
+        console.log(res);
+        if(res === undefined){
+            //Token is invalid
+            return({
+                jwtValid: jwtValid,
+                jwt: jwt,
+            })
+        }
+        if(!res.success){
+            //Token is invalid
+            return({
+                jwtValid: jwtValid,
+                jwt: jwt,
+            })
+        }
         if(res.success){
+            //Token is valid, show avatar and hide login button
             jwtValid = true;
             return({
                 jwtValid: jwtValid,
@@ -77,6 +93,12 @@ export async function rootLoader () {
         }
     } catch (error) {
         console.log(error);
+        //Token is invalid
+        return({
+            jwtValid: jwtValid,
+            jwt: jwt,
+        }
+        )
     }
     }
 }
