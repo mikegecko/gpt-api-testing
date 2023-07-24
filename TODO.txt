@@ -69,12 +69,12 @@ ________________________________________________
     ____________________________________________
         Server
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-    - GPT api proxy endpoint
-    - Add controller methods
-    - Add Routers
-    - Model storage for users & messages & convos
-    - CORS setup
-    - https
+    🔴 GPT api proxy endpoint
+    🟠 Add controller methods
+    🟠 Add Routers
+    🟠 Model storage for users & messages & convos
+    🟡 CORS setup
+    🟡 https
 ________________________________________________
                      BUGS
 ________________________________________________

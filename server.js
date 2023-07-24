@@ -23,6 +23,8 @@ app.use(logger("dev"));
 //Routers
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
+const chatRouter = require('./routes/chat');
+
 const { db_connect } = require('./utils/db');
 
 //Connect to db
@@ -31,6 +33,7 @@ db_connect();
 // Routes
 //app.use('/', indexRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/chat', chatRouter);
 
 // Start the server
 app.listen(port, () => {
