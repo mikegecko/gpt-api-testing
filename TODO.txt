@@ -22,12 +22,12 @@ ________________________________________________
         Client
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
     - Add style, product images and cool actions to page
-    - Truncate long convos > 4096 tokens to prevent API errors
+    ✅ Truncate long convos > 4096 tokens to prevent API errors -> find a way to do token based removal instead of slicing array
     🟡 Light/dark mode ui pass
     - Mobile view pass
     ✅ Pass gpt apikey through token -> This is temporary, rewrite so express server acts as a proxy for all requests requiring apikey
-    🟢 Pages:
-        🟢 Home 
+    🔵 Pages:
+        🔵 Home 
             🔴 add avatar for when user is logged in
             🟡 add product page
             🟡 add features page
@@ -36,8 +36,12 @@ ________________________________________________
             🟡 add pricing page
             🟡 get started button brings you to ...(idk yet)
             🟡 improve home page styling
-        ✅ Signin
-        ✅ Signup
+        🔵 Signin
+            🟡 mobile ui pass
+            🟡 light/dark mode pass
+        🔵 Signup
+            🟡 mobile ui pass
+            🟡 light/dark mode pass
         🟢 Dashboard
             🔴 add navigation back to home
             ✅ add open/close Sidebar - with animations
@@ -46,8 +50,15 @@ ________________________________________________
             🟢 add menu popover for settings/profile
                 ✅ Logout
                 🔴 settings
+                    🟡 color mode?
+                    🟡 clear all chats ?
                 🔴 profile
-        ✅ Error page
+                    🟡 Color mode ?
+                    🟡 Clear all chats ?
+                    🟠 Profile info
+        🔵 Error page
+            🟡 mobile ui pass
+            🟡 light/dark mode pass
 
     - Routes:[
         gpt-testing.com/ - default landing page (product, features, marketplace, company, navs should either scroll page to relavent section or navigate to correct page)
