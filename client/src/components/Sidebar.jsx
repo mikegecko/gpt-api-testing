@@ -16,6 +16,7 @@ import {
   MenuItem,
   MenuList,
   Text,
+  useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -24,6 +25,7 @@ import { router } from "../main";
 
 export default function Sidebar() {
   const { isOpen, onToggle } = useDisclosure();
+  const bg_sidebar = useColorModeValue('brand.400', 'brand.600');
 
   const handleLogout = () => {
     logout();
@@ -63,7 +65,7 @@ export default function Sidebar() {
               display="flex"
               flexDir="column"
               justifyContent="space-between"
-              background="brand.600"
+              background={bg_sidebar}
             >
               <Box>
                 <Box m={2} display="flex" flexDir="row" alignItems="center">
