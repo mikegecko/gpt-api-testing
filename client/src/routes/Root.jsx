@@ -14,11 +14,10 @@ export default function Root() {
     const bg_text = useColorModeValue('gray.800', 'gray.200');
     const bg_button = useColorModeValue('white', ' brand.800');
 
-    
 
     return(
         <Box display='flex' height='100vh' width='100vw' flexDirection='column' overflow='hidden' >  
-            <Box  zIndex={10} height='60px' background={bg_header} display='flex' alignItems='center' justifyContent='space-between' >
+            <Box zIndex={10} height='60px' background={bg_header} display='flex' alignItems='center' justifyContent='space-between' >
                 <Box display={{base: 'none', lg: 'flex'}} alignItems='center' width='10%' ml={8} >
                     <IconButton onClick={toggleColorMode} background={bg_button} aria-label="color mode" icon={<QuestionOutlineIcon />} />
                 </Box>
@@ -66,7 +65,7 @@ export async function rootLoader () {
     if(jwt){
     try {
         const res = await verify(localStorage.getItem('gptapi-token'));
-        console.log(res);
+        //console.log(res);
         if(res === undefined){
             //Token is invalid
             return({
