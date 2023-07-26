@@ -74,7 +74,7 @@ export const gptChatCompletion = async( formattedMessageArray, apiToken ) => {
   }
 }
 
-export const gptProxyChatCompletion = async(formattedMessageArray) => {
+export const gptProxyChatCompletion = async(formattedMessageArray, token) => {
   try {
     const res = await axios.post('/api/chat/request',
     {
@@ -82,7 +82,12 @@ export const gptProxyChatCompletion = async(formattedMessageArray) => {
       messages: [...formattedMessageArray], //Formatted messages example [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "Hello!"}]
       temperature: 0.7,
     },
-    
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }
+    }
     );
     return res.data;
   } catch (error) {
