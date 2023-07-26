@@ -55,27 +55,27 @@ module.exports = {
             return next(error);
         }
     },
-    verifyToken: async (req, res, next) => {
+    verifyToken: async(req, res, next) => {
         try {
             const authHeader = req.headers.authorization;
             if(!authHeader){
-                res.status(401).json({success: false, message: 'Unauthorized'});
+                return res.status(401).json({success: false, message: 'Unauthorized'});
             }
             const token = authHeader.split(' ')[1];
             if(!process.env.JWT_SECRET){
-                res.status(500).json({success: false, message: 'Internal server error'});
+                return res.status(500).json({success: false, message: 'Internal server error'});
             }
             try{
                 const decoded = jwt.verify(token, process.env.JWT_SECRET);
                 if(!decoded){
-                    res.status(401).json({success: false, message: 'Unauthorized'});
+                    return res.status(401).json({success: false, message: 'Unauthorized'});
                 }
                 const user = await User.findById(decoded.id);
                 if(!user){
-                    res.status(401).json({success: false, message: 'Unauthorized'});
+                    return res.status(401).json({success: false, message: 'Unauthorized'});
                 }
                 req.user = user;
-                res.json({success: true, message: 'User verified'});
+                return next();
             } catch(error){
                 if (error.name === 'TokenExpiredError') {
                     res.status(401).json({ success: false, message: 'Token has expired' });
@@ -85,7 +85,7 @@ module.exports = {
                 }
             }
         } catch (error) {
-            return next(error);
+            return next(error)
         }
     },
 }
