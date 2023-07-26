@@ -4,9 +4,10 @@ import { decodeToken, gptChatCompletion, gptProxyChatCompletion, verify } from "
 import { useEffect, useState } from "react";
 import { ArrowForwardIcon} from "@chakra-ui/icons";
 import Sidebar from "../components/Sidebar";
+import { useLoaderData } from "react-router-dom";
 
 export default function Dashboard() {
-
+    const encodedToken = useLoaderData()
     const [tokenInfo, setTokenInfo] = useState(null);
     const [input, setInput] = useState("");
     const [response, setResponse] = useState(null);
@@ -58,7 +59,7 @@ export default function Dashboard() {
             //   setResponse(res);
             //   console.log(res);
             // });
-            gptProxyChatCompletion(messages).then(res => {
+            gptProxyChatCompletion(messages, encodedToken).then(res => {
                 addResponseToMessage(res, userMessage);
                 setResponse(res);
                 console.log(res);
@@ -106,5 +107,5 @@ export async function dashboardLoader () {
         //FIX: res.success is undefined when token is expired
         verify(localStorage.getItem('gptapi-token')).then((res) => {res.success ? console.log("Token is valid") : router.navigate('/auth/login')}).catch(err => { router.navigate('/auth/login'); console.log(err)})
     }
-    return null;
+    return jwt;
 }
