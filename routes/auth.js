@@ -12,7 +12,10 @@ router.post('/login', authController.loginUser);
 router.post('/logout', authController.logoutUser);
 
 //GET verify
-router.get('/verify', authController.verifyToken);
+router.get('/verify', authController.verifyToken, (req, res) => {
+    const decodedToken = req.decoded;
+    res.json({success: true, message: 'User Verified'});
+});
 
 
 
