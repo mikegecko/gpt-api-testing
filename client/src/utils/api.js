@@ -73,3 +73,19 @@ export const gptChatCompletion = async( formattedMessageArray, apiToken ) => {
     console.error('Error requesting GPT completion', error);
   }
 }
+
+export const gptProxyChatCompletion = async(formattedMessageArray) => {
+  try {
+    const res = await axios.post('/api/chat/request',
+    {
+      model: 'gpt-3.5-turbo',
+      messages: [...formattedMessageArray], //Formatted messages example [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "Hello!"}]
+      temperature: 0.7,
+    },
+    
+    );
+    return res.data;
+  } catch (error) {
+    console.error('Error requesting GPT completion', error)
+  }
+}
