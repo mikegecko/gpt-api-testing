@@ -1,6 +1,6 @@
 import { Box, Button, Input, Text } from "@chakra-ui/react";
 import { router } from "../main";
-import { decodeToken, gptChatCompletion, verify } from "../utils/api";
+import { decodeToken, gptChatCompletion, gptProxyChatCompletion, verify } from "../utils/api";
 import { useEffect, useState } from "react";
 import { ArrowForwardIcon} from "@chakra-ui/icons";
 import Sidebar from "../components/Sidebar";
@@ -53,11 +53,16 @@ export default function Dashboard() {
         if (messages.length > 0 && messages[messages.length - 1].role === "user") {
             // Only trigger the API call when the user's input is added to messages
             const userMessage = messages[messages.length - 1].content;
-            gptChatCompletion(messages, tokenInfo.apiKey).then(res => {
-              addResponseToMessage(res, userMessage);
-              setResponse(res);
-              console.log(res);
-            });
+            // gptChatCompletion(messages, tokenInfo.apiKey).then(res => {
+            //   addResponseToMessage(res, userMessage);
+            //   setResponse(res);
+            //   console.log(res);
+            // });
+            gptProxyChatCompletion(messages).then(res => {
+                addResponseToMessage(res, userMessage);
+                setResponse(res);
+                console.log(res);
+            })
           }
           //If messages is too long, truncate it
           if(messages.length > 20){
