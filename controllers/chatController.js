@@ -19,8 +19,8 @@ module.exports = {
         }
       );
       const data = response.data;
-      return response.json(data);
-    } catch (err) {
+      return res.json(data);
+    } catch (error) {
       return next(error);
     }
   },
