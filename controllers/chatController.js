@@ -9,6 +9,8 @@ module.exports = {
         {
           model: "gpt-3.5-turbo",
           messages: req.body.messages, //Formatted messages example [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "Hello!"}]
+          functions: [], //Functions count towards context length
+          functions_call: "auto", //Valid values are 'auto' , 'none' & specified(force call)
           temperature: 0.7,
         },
         {

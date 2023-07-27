@@ -17,7 +17,7 @@ ________________________________________________
         - Stock/News confidence rating - buy/sell a Stock
         - Text based adventure game
         - Simple api wrapper with different profiles
-        
+        - Use GPT functions to create a dungeon game?
     ____________________________________________
         Client
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
