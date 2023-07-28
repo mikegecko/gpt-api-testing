@@ -1,5 +1,6 @@
 const axios = require("axios");
 const gpt_functions = require("../utils/GPT_functions");
+
 module.exports = {
   chatRequest: async (req, res, next) => {
     try {
@@ -11,7 +12,7 @@ module.exports = {
           model: "gpt-3.5-turbo",
           messages: req.body.messages, //Formatted messages example [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "Hello!"}]
           //functions: gpt_functions, //Functions count towards context length
-          //functions_call: "auto", //Valid values are 'auto' , 'none' & specified(force call)
+          functions_call: "auto", //Valid values are 'auto' , 'none' & specified(force call)
           temperature: 0.7,
         },
         {
@@ -22,7 +23,19 @@ module.exports = {
         }
       );
       const data = response.data;
-      //Check response data to see if GPT called a function, if so execute it and 
+      const response_message = data.choices[0].message;
+      //Check response data to see if GPT called a function, if so execute it
+      if(response_message.includes("function_call"))
+      {
+        //Call function & check if JSON response is valid
+        const available_functions = {
+          getPlayerData: gpt_functions.get_player_data,
+        }
+      const function_name = response_message.function_call.name;
+      const function_to_call = available_functions[function_name];
+      const function_args = JSON.parse(response_message.function_call.arguments);
+      const function_response = function_to_call(function_args);
+      }
       return res.json(data);
     } catch (error) {
       return next(error);
