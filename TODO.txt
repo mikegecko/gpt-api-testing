@@ -15,9 +15,9 @@ ________________________________________________
     - Ideas:
         - Simple GPT api wrapper with access to system and functions for easy testing without needing to create a whole environment
         - Stock/News confidence rating - buy/sell a Stock
-        - Text based adventure game
+        🔵 Text based adventure game
         - Simple api wrapper with different profiles
-        - Use GPT functions to create a dungeon game?
+        🔵 Use GPT functions to create a dungeon game?
     ____________________________________________
         Client
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
@@ -27,7 +27,7 @@ ________________________________________________
     - Improve color scheme
     - Create icon/name for product
     - Mobile view pass
-    ✅ Pass gpt apikey through token -> This is temporary, rewrite so express server acts as a proxy for all requests requiring apikey
+    
     🔵 Pages:
         🔵 Home 
             🔴 add avatar for when user is logged in
@@ -71,7 +71,7 @@ ________________________________________________
     ____________________________________________
         Server
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-    🔴 GPT api proxy endpoint
+    - 
     🟠 Add controller methods
     🟠 Add Routers
     🟠 Model storage for users & messages & convos
@@ -83,6 +83,7 @@ ________________________________________________
 
     ✅ I dont like how the sidebar on the dashboard jumps out when it first loads | Solved: AnimatePresence initialLoad={false}
     ❌ LLM loses context after truncation of long message chains, try adding system message back in as first message.
+    ❌ Message history lost after truncation, use two arrays?
 
 
 ________________________________________________
@@ -93,3 +94,5 @@ ________________________________________________
     ✅ JWT auth
     ✅ Setup mongoDB for user storage
     ✅ Axios request to gpt api
+    ✅ Pass gpt apikey through token -> This is temporary, rewrite so express server acts as a proxy for all requests requiring apikey
+    ✅ GPT api proxy endpoint
