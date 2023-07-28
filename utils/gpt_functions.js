@@ -1,7 +1,7 @@
 const Player = require('../models/player');
 
 module.exports = {
-    gpt_functions: [
+    functionDefinitions: [
         {
             name: 'get_player_data',
             description: "Get the player's data",
