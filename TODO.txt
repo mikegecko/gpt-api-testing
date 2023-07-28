@@ -27,7 +27,7 @@ ________________________________________________
     - Improve color scheme
     - Create icon/name for product
     - Mobile view pass
-    
+    🟠 Improve request handling result when gpt makes a function call
     🔵 Pages:
         🔵 Home 
             🔴 add avatar for when user is logged in
@@ -71,7 +71,8 @@ ________________________________________________
     ____________________________________________
         Server
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-    - 
+    🔴 Add system message server side
+    🟢 Add functions for player
     🟠 Add controller methods
     🟠 Add Routers
     🟠 Model storage for users & messages & convos
@@ -90,6 +91,7 @@ ________________________________________________
               COMPLETED FEATURES/TASKS
 ________________________________________________
 
+    ✅ Implement gpt function calling
     ✅ Setup mongoose and mongoDB
     ✅ JWT auth
     ✅ Setup mongoDB for user storage
