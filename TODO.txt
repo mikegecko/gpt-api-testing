@@ -82,6 +82,7 @@ ________________________________________________
 ________________________________________________
 
     ✅ I dont like how the sidebar on the dashboard jumps out when it first loads | Solved: AnimatePresence initialLoad={false}
+    ❌ LLM loses context after truncation of long message chains, try adding system message back in as first message.
 
 
 ________________________________________________
