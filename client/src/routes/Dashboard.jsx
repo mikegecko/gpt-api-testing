@@ -12,7 +12,7 @@ export default function Dashboard() {
     const [input, setInput] = useState("");
     const [response, setResponse] = useState(null);
     const [messages, setMessages] = useState([]);
-    const systemMessage = "You are a narrator in a text-based adventure game. Begin by asking the player for their name, class [mage, knight, assasin, archer] and where they would like to begin. When a user does an action add any of the following to the response [-10 health] [+10 health] [-10 mana] [+10 mana] [+10 gold] [-10 gold] [+10 stamina] [-10 stamina]."
+    const systemMessage = "You are a narrator in a text-based adventure game. Begin by asking the player for their name, class [mage, knight, assasin, archer] and where they would like to begin."
     //const tokenInfoString = JSON.stringify(tokenInfo);
 
     const addUserMessage = (message) => {
@@ -29,8 +29,16 @@ export default function Dashboard() {
 
     const addResponseToMessage = (res) => {
         if(res != null){
-            const message = res.choices[0].message;
-            setMessages([...messages, message]);
+            if(res.choices !== undefined){
+                const message = res.choices[0].message;
+                setMessages([...messages, message]);
+            }
+            if(res.response_message !== undefined && res.function_response_data !== undefined && res.second_response_data !== undefined){
+                const call_message = {role: res.response_message.role, content: `Calling function ${res.response_message.function_call.name} . . .`};
+                const func_message = res.function_response_data;
+                const message = res.second_response_data.choices[0].message;
+                setMessages([...messages, call_message, func_message, message]);
+            }
         }
     }
     // This should be done by tokens not my message length
@@ -60,9 +68,17 @@ export default function Dashboard() {
             //   console.log(res);
             // });
             gptProxyChatCompletion(messages, encodedToken).then(res => {
-                addResponseToMessage(res, userMessage);
-                setResponse(res);
                 console.log(res);
+                //Destructure the response
+                if(res.choices !== undefined){
+                    addResponseToMessage(res, userMessage);
+                    setResponse(res);
+                }
+                if(res.response_message !== undefined && res.function_response_data !== undefined && res.second_response_data !== undefined){
+                    addResponseToMessage(res, userMessage);
+                    setResponse(res.second_response_data);
+                }
+                
             })
           }
           //If messages is too long, truncate it

@@ -1,12 +1,14 @@
 const Player = require('../models/player');
-
+//Empty functions still require the parameters field to be populated
 module.exports = {
     functionDefinitions: [
         {
             name: 'test_function',
             description: "A test function",
-            parameters: {},
-            required: [],
+            parameters: {
+                type: "object",
+                properties: {},
+            },
         },
         {
             name: 'get_player_data',
@@ -16,7 +18,6 @@ module.exports = {
                 properties: {
                     
                 },
-                required: [],
             }
         },
         {
