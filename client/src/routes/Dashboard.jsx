@@ -12,7 +12,8 @@ export default function Dashboard() {
     const [input, setInput] = useState("");
     const [response, setResponse] = useState(null);
     const [messages, setMessages] = useState([]);
-    const systemMessage = "You are a narrator in a text-based adventure game. Begin by asking the player for their name, class [mage, knight, assasin, archer] and where they would like to begin."
+    // Rework this prompt
+    const systemMessage = "You are a narrator in a text-based adventure game. Begin by asking the player for their name, class [mage, knight, assasin, archer] and where they would like to begin. Call set_player_data when the following occurs, user input, attacking, deafeating enemies, opening treasure"
     //const tokenInfoString = JSON.stringify(tokenInfo);
 
     const addUserMessage = (message) => {

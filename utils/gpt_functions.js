@@ -1,6 +1,7 @@
 const Player = require('../models/player');
 //Empty functions still require the parameters field to be populated
 
+//This is temporary
 const playerData = {name: "test", health: 100, mana: 100, stamina: 100, xp: 0}
 
 module.exports = {
