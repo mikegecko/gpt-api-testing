@@ -1,7 +1,7 @@
 import { Box, Button, Input, Text } from "@chakra-ui/react";
 import { router } from "../main";
 import { decodeToken, gptChatCompletion, gptProxyChatCompletion, verify } from "../utils/api";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowForwardIcon} from "@chakra-ui/icons";
 import Sidebar from "../components/Sidebar";
 import { useLoaderData } from "react-router-dom";
@@ -12,9 +12,16 @@ export default function Dashboard() {
     const [input, setInput] = useState("");
     const [response, setResponse] = useState(null);
     const [messages, setMessages] = useState([]);
+    const messageContainerRef = useRef(null);
     // Rework this prompt
     const systemMessage = "You are a narrator in a text-based adventure game. Begin by asking the player for their name, class [mage, knight, assasin, archer] and where they would like to begin. Call set_player_data when the following occurs, user input, attacking, deafeating enemies, opening treasure"
     //const tokenInfoString = JSON.stringify(tokenInfo);
+
+    const scrollToBottom = () => {
+        if(messageContainerRef.current){
+            messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
+        }
+    }
 
     const addUserMessage = (message) => {
         const formattedMessage = { "role": "user", "content": message };
@@ -86,6 +93,7 @@ export default function Dashboard() {
           if(messages.length > 20){
             setMessages(truncateMessages(messages));
           }
+          scrollToBottom(); //Scroll to bottom when new message is added
         console.log(messages);
     }, [messages])
 
@@ -93,7 +101,7 @@ export default function Dashboard() {
         <Box display='flex' height='100vh' width='100vw' flexDir='row' >
             <Sidebar tokenInfo={tokenInfo} />
             <Box display='flex' flexDir='column' width='100%' height='100%' mr={40} ml={40}>
-                <Box display='flex' gap={2} p={2} flex='1' flexDir='column' overflowY='auto' height='100%'>
+                <Box display='flex' gap={2} p={2} flex='1' flexDir='column' overflowY='auto' height='100%' ref={messageContainerRef}>
                 {messages.map((message, index) => {
                     return(
                         <Text key={index}>{message.role} : {message.content}</Text>
