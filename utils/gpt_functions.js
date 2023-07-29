@@ -1,5 +1,8 @@
 const Player = require('../models/player');
 //Empty functions still require the parameters field to be populated
+
+const playerData = {name: "test", health: 100, mana: 100, stamina: 100, xp: 0}
+
 module.exports = {
     functionDefinitions: [
         {
@@ -43,12 +46,12 @@ module.exports = {
     get_player_data: async (args) => {
         //const playerData = new Player();
         //const playerData = Player.findOne({name: "test"});
-        const playerData = {name: "test", level: 1}
         return(JSON.stringify(playerData));
     },
     set_player_data: async (args) => {
         // Access arguments using args.property and args.value
-
+        playerData[args.property] = args.value;
+        return(JSON.stringify(playerData));
     },
     test_function: async (args) => {
         return("test success");
