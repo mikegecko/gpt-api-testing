@@ -31,7 +31,8 @@ ________________________________________________
     🟠 Improve request handling result when gpt makes a function call
     🔵 Pages:
         🔵 Home 
-            🔴 add avatar for when user is logged in
+            🟠 Find better way to bring user to dashboard(currently click on profile pic)
+            ✅ add avatar for when user is logged in
             🟡 add product page
             🟡 add features page
             🟡 add FAQ page
@@ -46,18 +47,22 @@ ________________________________________________
             🟡 mobile ui pass
             🟡 light/dark mode pass
         🟢 Dashboard
+            🟠 Add storing whole convos (store whole convo and only send truncated messages to API)
+            🟠 Add loading whole convos from DB (can select convo from sidebar or make a new one)
             ✅ add navigation back to home
             ✅ add open/close Sidebar - with animations
             ✅ add profile to bottom of Sidebar
-            🔴 add profile info from token to sidebar
+            ✅ add profile info from token to sidebar
             🟢 add menu popover for settings/profile
                 ✅ Logout
-                🔴 settings
-                    🟡 color mode?
-                    🟡 clear all chats ?
-                    - Show/hide token debug info
-                🔴 profile
-                    🟠 Profile info
+                🟢 settings
+                    ✅ color mode
+                    🟡 clear all chats 
+                    🟡 Show/hide token debug info
+                🟢 profile
+                    ✅ Profile info
+                    🟡 change password
+                    🟡 change account info
         🔵 Error page
             🟡 mobile ui pass
             🟡 light/dark mode pass
@@ -73,9 +78,12 @@ ________________________________________________
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
     🔴 Add system message server side
     🟢 Add functions for player
-    🟠 Add controller methods
-    🟠 Add Routers
-    🟠 Model storage for users & messages & convos
+    🔴 Add controller methods
+        - Messages & Convos
+    🔴 Add Routers
+        - Messages & Convos
+    🔴 Model storage for users & messages & convos
+        - Implement saving and getting from DB
     🟡 CORS setup
     🟡 https
 ________________________________________________
