@@ -37,10 +37,10 @@ export default function Root() {
             </Box>
             <Box zIndex={10} flex='1' display='flex' alignItems='center' justifyContent='center' flexDirection='column' >
                 <Text  fontSize={{base: '4xl', md: '4xl', lg: '6xl'}} fontWeight='bold' textAlign='center'>
-                    Welcome to the future of AI
+                    Welcome to the GPT Dungeon
                 </Text>
-                <Text fontSize={{base: 'xl', md: 'xl', lg: '2xl'}} fontWeight='300' textAlign='center' mb={4}>
-                    AI is changing how business works, lets change it together
+                <Text fontSize={{base: 'md', md: 'md', lg: 'xl'}} mr={24} ml={24} fontWeight='300' textAlign='center' mb={8}>
+                Embark on an unforgettable adventure like never before with GPT Dungeon - the ultimate AI-powered text-based game. Immerse yourself in a world of limitless possibilities, where your choices shape the story. Are you ready to test your wits and unravel the mysteries of the GPT Dungeon? Prepare for a thrilling journey into the unknown. Begin your adventure now!
                 </Text>
                 <Box>
                     <Button color={bg_text} backdropFilter='blur(4px)' variant='solid' as='a' rightIcon={<ArrowForwardIcon />} href="#">Get Started</Button>

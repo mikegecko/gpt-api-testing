@@ -40,6 +40,7 @@ ________________________________________________
             🟡 add pricing page
             🟠 get started button brings you to ...(idk yet)
             🟠 improve home page styling
+            - Add menu to avatar click
         🔵 Signin
             🟡 mobile ui pass
             🟡 light/dark mode pass
