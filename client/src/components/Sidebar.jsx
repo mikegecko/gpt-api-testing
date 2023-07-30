@@ -25,12 +25,14 @@ import { logout } from "../utils/api";
 import { router } from "../main";
 import ProfileModal from "./ProfileModal";
 import { useState } from "react";
+import SettingsModal from './SettingsModal';
 
 export default function Sidebar(props) {
   const { isOpen, onToggle } = useDisclosure();
   const bg_sidebar = useColorModeValue('brand.400', 'brand.600');
   const tokenInfo = props.tokenInfo;
   const [profileIsOpen, setProfileIsOpen] = useState(false);
+  const [settingsIsOpen, setSettingsIsOpen] = useState(false);
   const profileOnOpen = () => {
     setProfileIsOpen(true);
   };
@@ -39,10 +41,19 @@ export default function Sidebar(props) {
     setProfileIsOpen(false);
   };
 
+  const settingsOnOpen = () => {
+    setSettingsIsOpen(true);
+  }
+
+  const settingsOnClose = () => {
+    setSettingsIsOpen(false);
+  }
+
   const handleLogout = () => {
     logout();
     router.navigate("/");
   };
+
 
   return (
     <Box height="100%" display="flex">
@@ -136,7 +147,7 @@ export default function Sidebar(props) {
                   </MenuButton>
                   <MenuList>
                     <MenuItem onClick={profileOnOpen}>Profile</MenuItem>
-                    <MenuItem>Settings</MenuItem>
+                    <MenuItem onClick={settingsOnOpen}>Settings</MenuItem>
                     <Divider mt={2} mb={2} />
                     <MenuItem onClick={handleLogout}>Logout</MenuItem>
                   </MenuList>
@@ -148,6 +159,7 @@ export default function Sidebar(props) {
       </AnimatePresence>
       {/* Modals */}
       <ProfileModal isOpen={profileIsOpen} onClose={profileOnClose} onOpen={profileOnOpen} tokenInfo={tokenInfo} />
+      <SettingsModal isOpen={settingsIsOpen} onClose={settingsOnClose} onOpen={settingsOnOpen} />
     </Box>
   );
 }
