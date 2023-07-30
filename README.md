@@ -1,5 +1,5 @@
-# gpt-api-testing
-This is a repo for testing the different capabilities of OpenAI's LLM gpt models
+# GPT Dungeon
+A text-based adventure game utilizing OpenAI's GPT models and recently released functions.
 
 ### Features
 - Dark/Light modes
@@ -12,9 +12,9 @@ This is a repo for testing the different capabilities of OpenAI's LLM gpt models
 - [React](https://github.com/facebook/create-react-app)
 - [Chakra-ui](https://chakra-ui.com/)
 - [React Router](https://reactrouter.com/en/main)
-- [Express.js]()
-- [MongoDB]()
+- [Express.js](https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/)
 - [Framer Motion](https://www.framer.com/motion/)
-- 
+- [OpenAI's GPT LLM](https://openai.com/)
 
 ## Live [Demo]()
