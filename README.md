@@ -2,11 +2,11 @@
 A text-based adventure game utilizing OpenAI's GPT models and recently released functions.
 
 ### Features
+- ...rest api/express backend?
+- ...something about saving covos and different narrators maybe?
+- ...something about the ui updating by gpt calls
 - Dark/Light modes
 - Responsive design
-- Express backend
-- JWT Auth
-- 
 
 ## Built With
 - [React](https://github.com/facebook/create-react-app)
