@@ -1,3 +1,8 @@
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -15,11 +20,8 @@
 }
 
 body {
-  margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 .glass{
   background: rgba(255, 255, 255, 0.2);
@@ -29,7 +31,9 @@ body {
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
-
+#root{
+  width: 100%;
+}
 .circle-bg{
   --s: 76px; /* control the size */
         --c: #1a144a;
@@ -41,4 +45,37 @@ body {
            var(--s) 0 /calc(2*var(--s)) calc(2*var(--s)),
           radial-gradient(50% 50%,#2eb044 98%,var(--c)) 
            0 0/var(--s) var(--s);
+}
+.carousel-image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  aspect-ratio: 1;
+}
+.carousel-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.carousel-text{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  min-width: 100%;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
 }
