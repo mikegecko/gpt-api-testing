@@ -28,6 +28,11 @@ ________________________________________________
     - Improve color scheme
     - Create icon/name for product
     - Mobile view pass
+    - Ability to change models
+    - Safety settings (Safe, moderate, mature)
+    - Recently played convos
+    ✅ Add image carousel logic and blocking
+        🟡 add content to carousel
     🟠 Improve request handling result when gpt makes a function call
     🔵 Pages:
         🔵 Home 
@@ -61,6 +66,8 @@ ________________________________________________
                     🟡 clear all chats 
                     🟡 Show/hide token debug info
                 🟢 profile
+                    - token tracking/premium features
+                    - Free tier
                     ✅ Profile info
                     🟡 change password
                     🟡 change account info
