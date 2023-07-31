@@ -4,6 +4,7 @@ import Background from '../components/Background';
 import { verify } from '../utils/api';
 import { useLoaderData } from 'react-router-dom';
 import ImageCarousel from "../components/ImageCarousel";
+import { CurrencyIcon } from "../components/CurrencyIcon";
 
 
 export default function Root() {
@@ -35,6 +36,12 @@ export default function Root() {
                     <Link fontWeight='semibold' href="/mp">Company</Link>
                 </Box>
                 <Box display={{base: 'none', lg: 'flex'}} alignItems='center' justifyContent='flex-end' width='10%' mr={8}>
+                    <Box display={loaderData.jwtValid ? 'flex' : 'none'} alignItems='center' justifyContent='center' mr={4}>
+                    <CurrencyIcon />
+                    <Text>
+                        100
+                    </Text>
+                    </Box>
                     {loaderData.jwtValid ? (<Button display='flex' alignItems='center' justifyContent='center' variant='unstyled' as='a' href='/dashboard'><Avatar size='sm' name={'temp'} src={null} /></Button>): (<Button color={bg_text} variant='link' as='a' rightIcon={<ArrowForwardIcon />} href="/auth/login">Log in</Button>)}
                 </Box>
                 {/* Mobile View */}
@@ -47,8 +54,8 @@ export default function Root() {
                 <Text  fontSize={{base: '4xl', md: '4xl', lg: '6xl'}} fontWeight='bold' textAlign='center'>
                     Welcome to the GPT Dungeon
                 </Text>
-                <Text fontSize={{base: 'md', md: 'md', lg: 'xl'}} mr={24} ml={24} fontWeight='300' textAlign='center' mb={8} maxW="1037px">
-                Embark on an unforgettable adventure like never before with GPT Dungeon - the ultimate AI-powered text-based game. Immerse yourself in a world of limitless possibilities, where your choices shape the story. Are you ready to test your wits and unravel the mysteries of the GPT Dungeon? Prepare for a thrilling journey into the unknown. Begin your adventure now!
+                <Text fontSize={{base: 'md', md: 'md', lg: 'xl'}} mr={24} ml={24} fontWeight='300' textAlign='center' mb={4} maxW="1037px">
+                Embark on an unforgettable adventure like never before with GPT Dungeon - the ultimate AI-powered text-based game. Immerse yourself in a world of limitless possibilities, where your choices shape the story. Are you ready to test your wits and unravel the mysteries of the GPT Dungeon? Prepare for a thrilling journey into the unknown.
                 </Text>
                 <Box>
                     <Button color={bg_text} backdropFilter='blur(4px)' variant='solid' as='a' rightIcon={<ArrowForwardIcon />} href="#">Get Started</Button>

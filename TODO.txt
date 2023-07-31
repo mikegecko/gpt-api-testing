@@ -21,6 +21,10 @@ ________________________________________________
     ____________________________________________
         Client
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    - Premium Currency:
+        - 100 tokens for new users
+        - 1 token every 15 minutes (100(actually 96) tokens every 24 hours)
+
     - Add loading state/screen when user sends / receives a message
     - Add style, product images and cool actions to page
     ✅ Truncate long convos > 4096 tokens to prevent API errors -> find a way to do token based removal instead of slicing array
@@ -52,7 +56,7 @@ ________________________________________________
         🔵 Signup
             🟡 mobile ui pass
             🟡 light/dark mode pass
-        🟢 Dashboard
+        🟢 Dashboard -> This will become adventure -> new dashboard will show convos only along with profile, create new adventure, etc.
             🟠 Add storing whole convos (store whole convo and only send truncated messages to API)
             🟠 Add loading whole convos from DB (can select convo from sidebar or make a new one)
             ✅ add navigation back to home

@@ -10,6 +10,11 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    // Figure out how to store premium tokens/normal tokens for users also add in subtracting on message request and dont allow if user has none
+    tokens:{
+        type: Array,
+        default: [],
+    },
     date:{
         type: Date,
         default: Date.now
