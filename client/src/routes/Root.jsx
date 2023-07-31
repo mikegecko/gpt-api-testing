@@ -1,5 +1,5 @@
 import { ArrowForwardIcon, HamburgerIcon, QuestionOutlineIcon, TimeIcon } from "@chakra-ui/icons";
-import { Avatar, Box, Button, IconButton, Link, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { Avatar, Box, Button, Divider, IconButton, Link, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import Background from '../components/Background';
 import { verify } from '../utils/api';
 import { useLoaderData } from 'react-router-dom';
@@ -23,7 +23,7 @@ export default function Root() {
     "https://images.pexels.com/photos/777059/pexels-photo-777059.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",]
 
     return(
-        <Box display='flex' height='100%' width='100%' flexDirection='column' >  
+        <Box display='flex' height='100%' width='100%' flexDirection='column' backdropFilter='blur(100px)' >  
             <Box zIndex={10} height='60px' width='100%' background={bg_header} position='sticky' sx={{top: 0, left: 0, zIndex: 15}} display='flex' alignItems='center' justifyContent='space-between' >
                 <Box display={{base: 'none', lg: 'flex'}} alignItems='center' width='10%' ml={8} >
                     <IconButton onClick={toggleColorMode} background={bg_button} aria-label="color mode" icon={<QuestionOutlineIcon />} />
@@ -53,11 +53,12 @@ export default function Root() {
                 <Box>
                     <Button color={bg_text} backdropFilter='blur(4px)' variant='solid' as='a' rightIcon={<ArrowForwardIcon />} href="#">Get Started</Button>
                 </Box>
-                <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" mt={8}>
-                    <Box display='flex' flexDir='row' alignItems='center' justifyContent='center' width='100%' mb={8} gap={4}>
+                <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" mt={8} width='100%'>
+                    <Box display='flex' flexDir='row' alignItems='center' justifyContent='center' width='100%' mb={4} gap={4}>
                     <TimeIcon boxSize={6}  />
-                    <Text fontSize={{base: 'md', md: 'md', lg: 'xl'}} mt={8} fontWeight='300' textAlign='center' mb={8} >Recently Played</Text>
+                    <Text fontSize={{base: 'md', md: 'md', lg: 'xl'}} fontWeight='300' textAlign='center' >Recently Played</Text>
                     </Box>
+                    <Divider w='80%' mb={8} />
                     
                 </Box>
             </Box>

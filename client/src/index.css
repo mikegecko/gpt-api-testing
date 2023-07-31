@@ -33,7 +33,13 @@ body {
 }
 #root{
   width: 100%;
+  min-height: 100vh;
+  background-image: url(assets/layered-steps-haikei.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 .circle-bg{
   --s: 76px; /* control the size */
         --c: #1a144a;

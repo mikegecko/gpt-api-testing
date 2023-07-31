@@ -21,7 +21,7 @@ ________________________________________________
     ____________________________________________
         Client
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-    - Add loading state when user sends / receives a message
+    - Add loading state/screen when user sends / receives a message
     - Add style, product images and cool actions to page
     ✅ Truncate long convos > 4096 tokens to prevent API errors -> find a way to do token based removal instead of slicing array
     🟡 Light/dark mode ui pass

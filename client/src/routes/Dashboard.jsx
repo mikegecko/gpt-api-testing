@@ -98,7 +98,7 @@ export default function Dashboard() {
     }, [messages])
 
     return(
-        <Box display='flex' height='100vh' width='100vw' flexDir='row' >
+        <Box display='flex' height='100vh' width='100vw' flexDir='row' backgroundColor='brand.900' >
             <Sidebar tokenInfo={tokenInfo} />
             <Box display='flex' flexDir='column' width='100%' height='100%' mr={40} ml={40}>
                 <Box display='flex' gap={2} p={2} flex='1' flexDir='column' overflowY='auto' height='100%' ref={messageContainerRef}>
