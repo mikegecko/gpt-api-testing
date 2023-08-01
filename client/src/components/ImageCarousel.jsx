@@ -7,7 +7,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 //Add in props for headers and content (possible actions aswell)
 export default function ImageCarousel({images}){
     const [currentIndex, setCurrentIndex] = useState(0)
-    
+    const [intervalId, setIntervalId] = useState(null);
     const nextImage = () => {
         setCurrentIndex((prevIndex) => prevIndex + 1 === images.length ? 0 : prevIndex + 1);
     }
@@ -24,13 +24,17 @@ export default function ImageCarousel({images}){
     }
     
     useEffect(() => {
-        //Runs every 5 seconds
-        const intervalId = setInterval(() => {
+        //Runs every 8 seconds
+        const newIntervalId = setInterval(() => {
             nextImage();
         }, 8000);
 
-        return () => clearInterval(intervalId);
-    },[])
+        if(intervalId !== null){
+            clearInterval(intervalId);
+        } 
+        setIntervalId(newIntervalId);
+        return () => clearInterval(newIntervalId);
+    },[currentIndex])
 
 
     return(
