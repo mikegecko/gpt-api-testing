@@ -6,6 +6,8 @@ import { ArrowForwardIcon} from "@chakra-ui/icons";
 import Sidebar from "../components/Sidebar";
 import { useLoaderData } from "react-router-dom";
 
+//Remake this into a conversation component
+
 export default function Dashboard() {
     const encodedToken = useLoaderData()
     const [tokenInfo, setTokenInfo] = useState(null);

@@ -24,7 +24,7 @@ ________________________________________________
     - Premium Currency:
         - 100 tokens for new users
         - 1 token every 15 minutes (100(actually 96) tokens every 24 hours)
-
+    - Figure out how to avoid users having to make a account. Maybe make a JWT with their IP? Or a cookie?
     - Add loading state/screen when user sends / receives a message
     - Add style, product images and cool actions to page
     ✅ Truncate long convos > 4096 tokens to prevent API errors -> find a way to do token based removal instead of slicing array
@@ -34,12 +34,14 @@ ________________________________________________
     - Mobile view pass
     - Ability to change models
     - Safety settings (Safe, moderate, mature)
-    - Recently played convos
-    ✅ Add image carousel logic and blocking
-        🟡 add content to carousel
+    
     🟠 Improve request handling result when gpt makes a function call
     🔵 Pages:
         🔵 Home 
+            ✅ Add image carousel logic and blocking
+                🟡 add content to carousel
+                🟡 Add dots to carousel
+                ✅ add progress bar
             🟠 Find better way to bring user to dashboard(currently click on profile pic)
             ✅ add avatar for when user is logged in
             🟡 add product page
@@ -49,14 +51,20 @@ ________________________________________________
             🟡 add pricing page
             🟠 get started button brings you to ...(idk yet)
             🟠 improve home page styling
-            - Add menu to avatar click
-        🔵 Signin
+            🟠 Add menu to avatar click
+            🟠 Add recently played section
+                🟠 Convo cards
+        🟢 Signin
             🟡 mobile ui pass
             🟡 light/dark mode pass
-        🔵 Signup
+        🟢 Signup
             🟡 mobile ui pass
             🟡 light/dark mode pass
-        🟢 Dashboard -> This will become adventure -> new dashboard will show convos only along with profile, create new adventure, etc.
+        🟠 NEW Dashboard
+            🟠 Start new adventure -> creates a conversation with set properties from modal/dialog
+            🟡 Resume adventure -> list all adventures here. maybe include a search function
+            🟡 Discover -> community created presets?
+        🟢 Dashboard -> This will become adventure/conversation -> new dashboard will show convos only along with profile, create new adventure, etc.
             🟠 Add storing whole convos (store whole convo and only send truncated messages to API)
             🟠 Add loading whole convos from DB (can select convo from sidebar or make a new one)
             ✅ add navigation back to home
