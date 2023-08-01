@@ -1,6 +1,7 @@
+import { interval } from 'rxjs';
 import { PropTypes } from 'prop-types';
 import { Box, IconButton, Text } from "@chakra-ui/react";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 //Add in props for headers and content (possible actions aswell)
@@ -22,6 +23,14 @@ export default function ImageCarousel({images}){
         visible: { opacity: 1 }
     }
     
+    useEffect(() => {
+        //Runs every 5 seconds
+        const intervalId = setInterval(() => {
+            nextImage();
+        }, 8000);
+
+        return () => clearInterval(intervalId);
+    },[])
 
 
     return(
@@ -35,15 +44,6 @@ export default function ImageCarousel({images}){
                 <IconButton variant='ghost' aria-label="Next image" icon={<ChevronRightIcon fontSize='2xl' />} onClick={nextImage} />
                 </Box>
                 <AnimatePresence >
-                    {/* <motion.img 
-                        className='carousel-image'
-                        key={currentIndex}
-                        src={images[currentIndex]}
-                        initial={{opacity: 0,}}
-                        animate={{opacity: 1, x: "0"}}
-                        exit={{opacity: 0}}
-                        transition={{duration: 0.5}}
-                        /> */}
                         <motion.div
                         className='carousel-bg'
                         key={currentIndex}
@@ -51,6 +51,15 @@ export default function ImageCarousel({images}){
                         animate={{opacity: 1, }}
                         exit={{opacity: 0}}
                         transition={{duration: 0.5}}
+                        />
+                        {/* This animates more than once */}
+                        <motion.div 
+                            key={`${currentIndex}_loading_bar`}
+                            className='carousel-bg-bar'
+                            initial={{width:"0%"}}
+                            animate={{width: "97%",  }}
+                            transition={{duration: 8, ease: "linear", repeat: Infinity}}
+                            exit={{opacity: 0, transition: {duration: 0.2}}}
                         />
                     <motion.div
                         className='carousel-text'
