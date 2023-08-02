@@ -2,6 +2,7 @@ import { PropTypes } from 'prop-types';
 import { Avatar, Box, Button, IconButton, Link, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { CurrencyIcon } from "./CurrencyIcon";
 import { ArrowForwardIcon, HamburgerIcon, QuestionOutlineIcon } from "@chakra-ui/icons";
+import AvatarMenu from './AvatarMenu';
 
 export default function Header({jwtValid}) {
 
@@ -29,7 +30,7 @@ export default function Header({jwtValid}) {
                         100
                     </Text>
                     </Box>
-                    {jwtValid ? (<Button display='flex' alignItems='center' justifyContent='center' variant='unstyled' as='a' href='/dashboard'><Avatar size='sm' name={'temp'} src={null} /></Button>): (<Button color={bg_text} variant='link' as='a' rightIcon={<ArrowForwardIcon />} href="/auth/login">Log in</Button>)}
+                    {jwtValid ? (<AvatarMenu />): (<Button color={bg_text} variant='link' as='a' rightIcon={<ArrowForwardIcon />} href="/auth/login">Log in</Button>)}
                 </Box>
                 {/* Mobile View */}
                 <Box display={{base: 'flex', lg: 'none'}} alignItems='center' justifyContent='flex-end' width='100%' mr={4}>
