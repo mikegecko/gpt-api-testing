@@ -5,6 +5,7 @@ import { verify } from '../utils/api';
 import { useLoaderData } from 'react-router-dom';
 import ImageCarousel from "../components/ImageCarousel";
 import { CurrencyIcon } from "../components/CurrencyIcon";
+import Header from "../components/Header";
 
 
 export default function Root() {
@@ -24,31 +25,8 @@ export default function Root() {
     "https://images.pexels.com/photos/777059/pexels-photo-777059.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",]
 
     return(
-        <Box display='flex' height='100%' width='100%' flexDirection='column' backdropFilter='blur(100px)' >  
-            <Box zIndex={10} height='60px' width='100%' background={bg_header} position='sticky' sx={{top: 0, left: 0, zIndex: 15}} display='flex' alignItems='center' justifyContent='space-between' >
-                <Box display={{base: 'none', lg: 'flex'}} alignItems='center' width='10%' ml={8} >
-                    <IconButton onClick={toggleColorMode} background={bg_button} aria-label="color mode" icon={<QuestionOutlineIcon />} />
-                </Box>
-                <Box display={{base: 'none', lg: 'flex'}} width='30%' alignItems='center' justifyContent='space-evenly'>
-                    <Link fontWeight='semibold' href="#">Product</Link>
-                    <Link fontWeight='semibold' href="#">Features</Link>
-                    <Link fontWeight='semibold' href="#">FAQ</Link>
-                    <Link fontWeight='semibold' href="/mp">Company</Link>
-                </Box>
-                <Box display={{base: 'none', lg: 'flex'}} alignItems='center' justifyContent='flex-end' width='10%' mr={8}>
-                    <Box display={loaderData.jwtValid ? 'flex' : 'none'} alignItems='center' justifyContent='center' mr={4}>
-                    <CurrencyIcon />
-                    <Text>
-                        100
-                    </Text>
-                    </Box>
-                    {loaderData.jwtValid ? (<Button display='flex' alignItems='center' justifyContent='center' variant='unstyled' as='a' href='/dashboard'><Avatar size='sm' name={'temp'} src={null} /></Button>): (<Button color={bg_text} variant='link' as='a' rightIcon={<ArrowForwardIcon />} href="/auth/login">Log in</Button>)}
-                </Box>
-                {/* Mobile View */}
-                <Box display={{base: 'flex', lg: 'none'}} alignItems='center' justifyContent='flex-end' width='100%' mr={4}>
-                    <IconButton variant='unstyled' aria-label="menu" icon={<HamburgerIcon boxSize={8} />} />
-                </Box>
-            </Box>
+        <Box display='flex' height='100%' width='100%' flexDirection='column' backdropFilter='blur(100px)' >
+            <Header jwtValid={loaderData.jwtValid} />
             <Box zIndex={10} flex='1' display='flex' alignItems='center' justifyContent='flex-start' flexDirection='column' mt={4} >
                 <ImageCarousel images={images} />
                 <Text  fontSize={{base: '4xl', md: '4xl', lg: '6xl'}} fontWeight='bold' textAlign='center'>
