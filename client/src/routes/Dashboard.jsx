@@ -31,7 +31,6 @@ export default function Dashboard() {
                 <Text fontSize='2xl' mt={8}>Previous Adventures</Text>
                 <Divider />
                 <Box>
-                    
                     <Box display='flex' flexDir='row' flexGrow='1' justifyContent='flex-start' alignItems='flex-start' padding='1rem' gap='2rem' mt={4}>
                     <Box height='300px' width='300px' backgroundColor='brand.500' borderRadius='10px' padding='1rem' >
                         Adventure 1
