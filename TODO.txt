@@ -36,6 +36,8 @@ ________________________________________________
     - Safety settings (Safe, moderate, mature)
     
     🟠 Improve request handling result when gpt makes a function call
+    🔵 Components:
+        🟡 Footer
     🔵 Pages:
         🔵 Home 
             ✅ Add image carousel logic and blocking
