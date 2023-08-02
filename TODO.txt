@@ -102,6 +102,7 @@ ________________________________________________
     ____________________________________________
         Server
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    - Add functions for controlling token(currency) subtraction and regeneration
     🔴 Add system message server side
     🟢 Add functions for player
     🔴 Add controller methods
