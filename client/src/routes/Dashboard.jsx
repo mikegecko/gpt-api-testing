@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { router } from "../main";
 import { decodeToken, verify } from "../utils/api";
 import { useLoaderData } from "react-router-dom";
-import { Box } from "@chakra-ui/react";
+import { Box, Divider, Text } from "@chakra-ui/react";
 import Header from "../components/Header";
 
 export default function Dashboard() {
@@ -17,8 +17,31 @@ export default function Dashboard() {
     },[])
 
     return(
-        <Box display='flex' minH='100vh' minW='100vw' flexDir='row' backdropFilter='blur(100px)'>
+        <Box display='flex' minH='100vh' minW='100vw' flexDir='column' backdropFilter='blur(100px)'>
             <Header jwtValid={loaderData.jwtValid} />
+            <Box display='flex' flexDir='column' justifyContent='flex-start' alignItems='center' padding='1rem'>
+                <Box display='flex' flexDir='row' flexGrow='1' justifyContent='flex-start' alignItems='flex-start' padding='1rem' gap='2rem'>
+                    <Box height='300px' width='300px' backgroundColor='brand.500' borderRadius='10px' padding='1rem'>
+                        New Adventure
+                    </Box>
+                    <Box height='300px' width='300px' backgroundColor='brand.500' borderRadius='10px' padding='1rem'>
+                        Resume Adventure
+                    </Box>
+                </Box>
+                <Text fontSize='2xl' mt={8}>Previous Adventures</Text>
+                <Divider />
+                <Box>
+                    
+                    <Box display='flex' flexDir='row' flexGrow='1' justifyContent='flex-start' alignItems='flex-start' padding='1rem' gap='2rem' mt={4}>
+                    <Box height='300px' width='300px' backgroundColor='brand.500' borderRadius='10px' padding='1rem' >
+                        Adventure 1
+                    </Box>
+                    <Box height='300px' width='300px' backgroundColor='brand.500' borderRadius='10px' padding='1rem'>
+                        Adventure 2
+                    </Box>
+                </Box>
+                </Box>
+            </Box>
         </Box>
     )
 
