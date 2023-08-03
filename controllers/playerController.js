@@ -6,7 +6,7 @@ const gpt_functions = require("../utils/GPT_functions");
 
 module.exports = {
     createPlayer: async (req, res) => {
-
+    
     },
     getPlayer: async (req, res) => {
 
