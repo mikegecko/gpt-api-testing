@@ -102,6 +102,9 @@ ________________________________________________
     ____________________________________________
         Server
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    - Convo 
+        - Create new convo with userid
+        - Return all convos with matching userid
     - Add functions for controlling token(currency) subtraction and regeneration
     🔴 Add system message server side
     🟢 Add functions for player

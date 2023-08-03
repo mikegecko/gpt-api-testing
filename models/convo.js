@@ -17,6 +17,6 @@ const convoSchema = new Schema({
         type: Date,
         default: Date.now
     }
-})
+}, {collection: 'convos'});
 
 module.exports = mongoose.model('Convo', convoSchema);
