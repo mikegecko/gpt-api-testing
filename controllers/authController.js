@@ -17,6 +17,28 @@ module.exports = {
             return next(error);
         }
     },
+    updateUser: async (req, res, next) => {
+        try{
+            //Redo bcrypt incase of password update
+            //const updatedUser = await User.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true});
+            res.json(updatedUser);
+        }
+        catch(error){
+            return next(error);
+        }
+    },
+    deleteUser: async (req, res, next) => {
+        try{
+            const token = req.headers.authorization.split(' ')[1];
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const userid = decoded.id;
+            const deletedUser = await User.findByIdAndDelete(userid);
+            res.json(deletedUser);
+        }
+        catch(error){
+            return next(error);
+        }
+    },
     loginUser: async (req, res, next) => {
         try{
             const {email, password} = req.body;
