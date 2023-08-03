@@ -103,6 +103,7 @@ ________________________________________________
         Server
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
     - Convo 
+        - Will hold settings like temperature & logit bias
         - Create new convo with userid
         - Return all convos with matching userid
     - Add functions for controlling token(currency) subtraction and regeneration

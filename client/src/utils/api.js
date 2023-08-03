@@ -94,3 +94,21 @@ export const gptProxyChatCompletion = async(formattedMessageArray, token) => {
     console.error('Error requesting GPT completion', error)
   }
 }
+
+export const createNewConversation = async(newConvo ,token) => {
+  try {
+    const res = await axios.post('/api/chat/conversation',
+    {
+      title: newConvo.title,
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    return res.data;
+  } catch(error){
+    console.error('Error creating new conversation', error)
+  }
+}
