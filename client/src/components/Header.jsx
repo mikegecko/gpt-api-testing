@@ -18,7 +18,7 @@ export default function Header({jwtValid}) {
                     <IconButton onClick={toggleColorMode} background={bg_button} aria-label="color mode" icon={<QuestionOutlineIcon />} />
                 </Box>
                 <Box display={{base: 'none', lg: 'flex'}} width='30%' alignItems='center' justifyContent='space-evenly'>
-                    <Link fontWeight='semibold' href="#">Product</Link>
+                    <Link fontWeight='semibold' href="/">Product</Link>
                     <Link fontWeight='semibold' href="#">Features</Link>
                     <Link fontWeight='semibold' href="#">FAQ</Link>
                     <Link fontWeight='semibold' href="/mp">Company</Link>
