@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const convoSchema = new Schema({
+    title:{
+        type: String,
+        required: true,  
+    },
     messages: [],
     user:{
         type: Schema.Types.ObjectId,
