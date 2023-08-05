@@ -17,6 +17,13 @@ const convoSchema = new Schema({
         ref: 'Player',
         required: false
     },
+    settings:{
+        type: Object,
+        default: {
+            temperature: 0.7,
+            //Add more settings here once I decide on them
+        }
+    },
     created:{
         type: Date,
         default: Date.now
