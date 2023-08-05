@@ -9,11 +9,14 @@ module.exports = {
             const token = req.headers.authorization.split(' ')[1];
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
             const userid = decoded.id;
-            const title = req.body.title;
+            const {title, messages, player, settings} = req.body;
             //Create a new conversation with a valid userid and title
             const newConvo = new Convo({
                 title: title,
                 user: userid,
+                messages: messages,
+                player: player,
+                settings: settings,
             }).save();
             //Update user's convos array
             const user = await User.findById(userid);
