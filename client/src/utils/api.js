@@ -53,26 +53,26 @@ export const decodeToken = async (token) => {
   return decoded;
 }
 // Max context is 4096 tokens at $0.0015 / 1K tokens
-export const gptChatCompletion = async( formattedMessageArray, apiToken ) => {
-  try{
-    const res = await axios.post('https://api.openai.com/v1/chat/completions',
-    {
-      model: 'gpt-3.5-turbo',
-      messages: [...formattedMessageArray], //Formatted messages example [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "Hello!"}]
-      temperature: 0.7,
-    },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiToken}`,
-      }
-    }
-    );
-    return res.data;
-  } catch(error) {
-    console.error('Error requesting GPT completion', error);
-  }
-}
+// export const gptChatCompletion = async( formattedMessageArray, apiToken ) => {
+//   try{
+//     const res = await axios.post('https://api.openai.com/v1/chat/completions',
+//     {
+//       model: 'gpt-3.5-turbo',
+//       messages: [...formattedMessageArray], //Formatted messages example [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "Hello!"}]
+//       temperature: 0.7,
+//     },
+//     {
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Authorization: `Bearer ${apiToken}`,
+//       }
+//     }
+//     );
+//     return res.data;
+//   } catch(error) {
+//     console.error('Error requesting GPT completion', error);
+//   }
+// }
 
 export const gptProxyChatCompletion = async(formattedMessageArray, token) => {
   try {
@@ -95,15 +95,15 @@ export const gptProxyChatCompletion = async(formattedMessageArray, token) => {
   }
 }
 
-export const createNewConversation = async(newConvo ,token) => {
+export const createNewConversation = async(newConvo, token) => {
   try {
     const res = await axios.post('/api/chat/conversation',
     {
       title: newConvo.title,
-      messages: [{role: 'system', content: 'Welcome to the new conversation!'}], //Put pre-prompts here
+      messages: [...newConvo.messages], //Put pre-prompts here
       //User cant change the owner of the conversation
-      player: newConvo.player,
-      settings: newConvo.settings,
+      player: newConvo.player ? newConvo.player : null,
+      settings: newConvo.settings ? newConvo.settings : null,
     },
     {
       headers: {
