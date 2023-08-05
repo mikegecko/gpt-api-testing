@@ -15,6 +15,11 @@ const userSchema = new Schema({
         type: Array,
         default: [],
     },
+    //Convo is an array of _ids that point to the conversations that the user has made
+    conversations:{
+        type: Array,
+        default: [],
+    },
     date:{
         type: Date,
         default: Date.now
