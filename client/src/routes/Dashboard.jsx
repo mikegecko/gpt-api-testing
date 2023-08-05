@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { router } from "../main";
-import { decodeToken, verify } from "../utils/api";
+import { createNewConversation, decodeToken, verify } from "../utils/api";
 import { useLoaderData } from "react-router-dom";
 import { Box, Divider, Text } from "@chakra-ui/react";
 import Header from "../components/Header";
@@ -9,9 +9,16 @@ import AdventureCard from "../components/AdventureCard";
 export default function Dashboard() {
     const loaderData = useLoaderData();
     const [tokenInfo, setTokenInfo] = useState(null);
+    const [newConvo, setNewConvo] = useState(null); 
 
     const newAdventure = () => {
-        console.log("New Adventure");
+        //console.log("New Adventure");
+        // const newConvo = {
+        //     title: 'Test',
+        //     messages:[{role: 'system', content: 'Welcome to the new conversation!'}],
+        // }
+        //createNewConversation(newConvo, loaderData.jwt).then(res => {console.log(res)});
+        router.navigate('/new');
     }
 
     const resumeAdventure = () => {
@@ -24,7 +31,7 @@ export default function Dashboard() {
     },[])
 
     return(
-        <Box display='flex' minH='100vh' minW='100vw' flexDir='column' backdropFilter='blur(100px)'>
+        <Box display='flex' minH='100vh' height='100%' width='100%' flexDir='column' backdropFilter='blur(100px)'>
             <Header jwtValid={loaderData.jwtValid} />
             <Box display='flex' flexDir='column' justifyContent='flex-start' alignItems='center' padding='1rem'>
                 <Box display='grid' gridTemplateColumns={{base: '1fr', lg: '1fr 1fr'}} flexDir='row' flexGrow='1' justifyContent='flex-start' alignItems='flex-start' padding='1rem' gap='2rem'>
