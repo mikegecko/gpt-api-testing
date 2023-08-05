@@ -4,6 +4,7 @@ import { decodeToken, verify } from "../utils/api";
 import { useLoaderData } from "react-router-dom";
 import { Box, Divider, Text } from "@chakra-ui/react";
 import Header from "../components/Header";
+import AdventureCard from "../components/AdventureCard";
 
 export default function Dashboard() {
     const loaderData = useLoaderData();
@@ -11,6 +12,10 @@ export default function Dashboard() {
 
     const newAdventure = () => {
         console.log("New Adventure");
+    }
+
+    const resumeAdventure = () => {
+        console.log("resume Adventure");
     }
 
     useEffect(() => {
@@ -22,25 +27,15 @@ export default function Dashboard() {
         <Box display='flex' minH='100vh' minW='100vw' flexDir='column' backdropFilter='blur(100px)'>
             <Header jwtValid={loaderData.jwtValid} />
             <Box display='flex' flexDir='column' justifyContent='flex-start' alignItems='center' padding='1rem'>
-                <Box display='flex' flexDir='row' flexGrow='1' justifyContent='flex-start' alignItems='flex-start' padding='1rem' gap='2rem'>
-                    <Box onClick={newAdventure} height='300px' width='300px' backgroundColor='brand.500' borderRadius='10px' padding='1rem'>
-                        New Adventure
-                    </Box>
-                    <Box height='300px' width='300px' backgroundColor='brand.500' borderRadius='10px' padding='1rem'>
-                        Resume Adventure
-                    </Box>
+                <Box display='grid' gridTemplateColumns={{base: '1fr', lg: '1fr 1fr'}} flexDir='row' flexGrow='1' justifyContent='flex-start' alignItems='flex-start' padding='1rem' gap='2rem'>
+                    <AdventureCard title="New Adventure" onClick={newAdventure} />
+                    <AdventureCard title="Resume Adventure" onClick={resumeAdventure} />
                 </Box>
                 <Text fontSize='2xl' mt={8}>Previous Adventures</Text>
                 <Divider />
-                <Box>
-                    <Box display='flex' flexDir='row' flexGrow='1' justifyContent='flex-start' alignItems='flex-start' padding='1rem' gap='2rem' mt={4}>
-                    <Box height='300px' width='300px' backgroundColor='brand.500' borderRadius='10px' padding='1rem' >
-                        Adventure 1
-                    </Box>
-                    <Box height='300px' width='300px' backgroundColor='brand.500' borderRadius='10px' padding='1rem'>
-                        Adventure 2
-                    </Box>
-                </Box>
+                <Box display='grid' gridTemplateColumns={{base: '1fr', lg: '1fr 1fr'}} mt={4} flexDir='row' flexGrow='1' justifyContent='flex-start' alignItems='flex-start' padding='1rem' gap='2rem'>
+                    <AdventureCard title="Adventure 1" onClick={newAdventure}  />
+                    <AdventureCard title="Adventure 2" onClick={resumeAdventure}  />
                 </Box>
             </Box>
         </Box>
