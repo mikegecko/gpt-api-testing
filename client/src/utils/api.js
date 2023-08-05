@@ -100,6 +100,10 @@ export const createNewConversation = async(newConvo ,token) => {
     const res = await axios.post('/api/chat/conversation',
     {
       title: newConvo.title,
+      messages: [{role: 'system', content: 'Welcome to the new conversation!'}], //Put pre-prompts here
+      //User cant change the owner of the conversation
+      player: newConvo.player,
+      settings: newConvo.settings,
     },
     {
       headers: {
@@ -110,5 +114,20 @@ export const createNewConversation = async(newConvo ,token) => {
     return res.data;
   } catch(error){
     console.error('Error creating new conversation', error)
+  }
+}
+
+export const deleteConversation = async(conversationId, token) => {
+  try {
+    const res = await axios.delete(`/api/chat/conversation/${conversationId}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    return res.data;
+  } catch(error){
+    console.error('Error deleting conversation', error)
   }
 }
