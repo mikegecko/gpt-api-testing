@@ -17,7 +17,7 @@ module.exports = {
             }).save();
             //Update user's convos array
             const user = await User.findById(userid);
-            user.convos.push(newConvo._id);
+            user.conversations.push(newConvo._id);
             user.save();
             //Return the new conversation
             res.json(newConvo);
@@ -98,7 +98,7 @@ module.exports = {
             convo.delete();
             //Update the user's convos array
             const user = await User.findById(userid);
-            user.convos = user.convos.filter(convo => convo != convoId);
+            user.conversations = user.conversations.filter(convo => convo != convoId);
             user.save();
             res.json({success: true, message: 'Conversation deleted'});
         }
