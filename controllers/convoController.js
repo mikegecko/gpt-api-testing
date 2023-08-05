@@ -15,6 +15,11 @@ module.exports = {
                 title: title,
                 user: userid,
             }).save();
+            //Update user's convos array
+            const user = await User.findById(userid);
+            user.convos.push(newConvo._id);
+            user.save();
+            //Return the new conversation
             res.json(newConvo);
         } catch (error) {
             console.log(error);
@@ -33,10 +38,73 @@ module.exports = {
             res.status(500).json({success: false, message: 'Internal server error'});
         }
     },
+    getConvo: async (req, res) => {
+        try {
+            const token = req.headers.authorization.split(' ')[1];
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const userid = decoded.id;
+            const convoId = req.params.id;
+            const convo = await Convo.findById(convoId);
+            if (!convo) {
+                res.status(404).json({success: false, message: 'Conversation not found'});
+            }
+            if(convo.user != userid) {
+                res.status(401).json({success: false, message: 'Unauthorized'});
+            }
+            res.json(convo);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({success: false, message: 'Internal server error'});
+        }
+    },
     updateConvo: async (req, res) => {
-
+        try{
+            const token = req.headers.authorization.split(' ')[1];
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const userid = decoded.id;
+            const convoId = req.params.id;
+            // Get new convo from request body
+            const convo = await Convo.findById(convoId);
+            if (!convo) {
+                res.status(404).json({success: false, message: 'Conversation not found'});
+            }
+            if(convo.user != userid) {
+                res.status(401).json({success: false, message: 'Unauthorized'});
+            }
+            //Update the conversation
+            // update here
+            convo.save();
+            res.json(convo);
+        }
+        catch{
+            console.log(error);
+            res.status(500).json({success: false, message: 'Internal server error'});
+        }
     },
     deleteConvo: async (req, res) => {
-        
+        try{
+            const token = req.headers.authorization.split(' ')[1];
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const userid = decoded.id;
+            const convoId = req.params.id;
+            const convo = await Convo.findById(convoId);
+            if (!convo) {
+                res.status(404).json({success: false, message: 'Conversation not found'});
+            }
+            if(convo.user != userid) {
+                res.status(401).json({success: false, message: 'Unauthorized'});
+            }
+            //Delete the conversation
+            convo.delete();
+            //Update the user's convos array
+            const user = await User.findById(userid);
+            user.convos = user.convos.filter(convo => convo != convoId);
+            user.save();
+            res.json({success: true, message: 'Conversation deleted'});
+        }
+        catch(error){
+            console.log(error);
+            res.status(500).json({success: false, message: 'Internal server error'});
+        }
     },
 }
