@@ -9,7 +9,9 @@ export default function Dashboard() {
     const loaderData = useLoaderData();
     const [tokenInfo, setTokenInfo] = useState(null);
 
-
+    const newAdventure = () => {
+        console.log("New Adventure");
+    }
 
     useEffect(() => {
         const jwt = localStorage.getItem('gptapi-token');
@@ -21,7 +23,7 @@ export default function Dashboard() {
             <Header jwtValid={loaderData.jwtValid} />
             <Box display='flex' flexDir='column' justifyContent='flex-start' alignItems='center' padding='1rem'>
                 <Box display='flex' flexDir='row' flexGrow='1' justifyContent='flex-start' alignItems='flex-start' padding='1rem' gap='2rem'>
-                    <Box height='300px' width='300px' backgroundColor='brand.500' borderRadius='10px' padding='1rem'>
+                    <Box onClick={newAdventure} height='300px' width='300px' backgroundColor='brand.500' borderRadius='10px' padding='1rem'>
                         New Adventure
                     </Box>
                     <Box height='300px' width='300px' backgroundColor='brand.500' borderRadius='10px' padding='1rem'>

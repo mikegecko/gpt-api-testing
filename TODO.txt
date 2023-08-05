@@ -134,8 +134,7 @@ ________________________________________________
     ❌ LLM loses context after truncation of long message chains, try adding system message back in as first message.
     ❌ Message history lost after truncation, use two arrays?
     ❌ LLM or server hangs when calling gpt functions sometimes
-
-
+    
 ________________________________________________
               COMPLETED FEATURES/TASKS
 ________________________________________________
