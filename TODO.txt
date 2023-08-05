@@ -68,6 +68,15 @@ ________________________________________________
             🟡 light/dark mode pass
         🟠 NEW Dashboard
             🟠 Start new adventure -> creates a conversation with set properties from modal/dialog
+                - New adventure Modal sections
+                    - Title
+                    - Player name
+                    - Setting
+                    - Class (Based on setting)
+                    - Advanced settings
+                        - temperature
+                        - memory
+                        - etc.
             🟡 Resume adventure -> list all adventures here. maybe include a search function
             🟡 Discover -> community created presets?
         🟢 Dashboard -> This will become adventure/conversation -> new dashboard will show convos only along with profile, create new adventure, etc.
