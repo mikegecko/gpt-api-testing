@@ -9,5 +9,7 @@ router.post('/request', authController.verifyToken, chatController.chatRequest);
 
 router.post('/conversation', authController.verifyToken, convoController.createConvo);
 
+router.get('/conversation/:id', authController.verifyToken, convoController.getConvo);
+
 module.exports = router;
 
