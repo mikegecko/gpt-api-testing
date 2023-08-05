@@ -66,19 +66,19 @@ ________________________________________________
         🟢 Signup
             🟡 mobile ui pass
             🟡 light/dark mode pass
-        🟠 NEW Dashboard
-            🟠 Start new adventure -> creates a conversation with set properties from modal/dialog
-                - New adventure Modal sections
-                    - Title
-                    - Player name
-                    - Setting
-                    - Class (Based on setting)
-                    - Advanced settings
-                        - temperature
-                        - memory
-                        - etc.
+        🟢 NEW Dashboard
+            🟢 Start new adventure -> navigate to /new
             🟡 Resume adventure -> list all adventures here. maybe include a search function
             🟡 Discover -> community created presets?
+        🟢 New Adventure
+            🟢 Title -> auto generate this
+            🟢 Player name
+            🟢 Setting
+            🟢 Class (Based on setting)
+            🟢 Advanced settings
+                🟢 temperature
+                🟢 memory
+                🟡 etc.
         🟢 Dashboard -> This will become adventure/conversation -> new dashboard will show convos only along with profile, create new adventure, etc.
             🟠 Add storing whole convos (store whole convo and only send truncated messages to API)
             🟠 Add loading whole convos from DB (can select convo from sidebar or make a new one)
@@ -111,19 +111,38 @@ ________________________________________________
     ____________________________________________
         Server
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-    - Convo 
-        - Will hold settings like temperature & logit bias
-        - Create new convo with userid
-        - Return all convos with matching userid
-    - Add functions for controlling token(currency) subtraction and regeneration
-    🔴 Add system message server side
-    🟢 Add functions for player
-    🔴 Add controller methods
-        - Messages & Convos
-    🔴 Add Routers
-        - Messages & Convos
-    🔴 Model storage for users & messages & convos
-        - Implement saving and getting from DB
+    Models:
+        ✅ Convo
+        ✅ User
+        🟠 Player
+        🟠 Message
+    Controllers:
+        ✅ Authorization
+            ✅ Login
+            ✅ Logout
+            ✅ Verify Token
+        - Users
+            ✅ Create user
+            🟠 Get User
+            🟠 Update User
+            ✅ Delete User
+        - Conversations
+            ✅ Create Convo
+            ✅ Get Convo
+            ✅ Get all convos by user
+            🟠 Update convo
+            ✅ Delete convo
+        - Message
+            - Create message
+            - update message
+            - get messsage
+            - delete message
+        - Player
+            - create player
+            - get player
+            - update player
+            - delete player
+    Other:
     🟡 CORS setup
     🟡 https
 ________________________________________________
@@ -134,7 +153,7 @@ ________________________________________________
     ❌ LLM loses context after truncation of long message chains, try adding system message back in as first message.
     ❌ Message history lost after truncation, use two arrays?
     ❌ LLM or server hangs when calling gpt functions sometimes
-    
+
 ________________________________________________
               COMPLETED FEATURES/TASKS
 ________________________________________________
