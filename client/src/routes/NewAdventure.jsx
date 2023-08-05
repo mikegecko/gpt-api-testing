@@ -1,4 +1,4 @@
-import { Box, Divider, Input, Radio, RadioGroup, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from "@chakra-ui/react";
+import { Box, Button, Divider, Input, Radio, RadioGroup, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from "@chakra-ui/react";
 import { router } from "../main";
 import { verify } from "../utils/api";
 import Header from "../components/Header";
@@ -10,10 +10,16 @@ export default function NewAdventure(){
     const [tabIndex, setTabIndex] = useState(0)
     const [classValue, setClassValue] = useState(1)
 
+
+    const onTabChange = (index) => {
+        setClassValue(null);
+        (index) => setTabIndex(index)
+    }
+
     return(
         <Box display='flex' height='100%' minH='100vh' width='100%' flexDirection='column' backdropFilter='blur(100px)'>
             <Header jwtValid={loaderData.jwtValid} />
-            <Box mt={8} flex='1' display='flex' flexDir='column' justifyContent='flex-start' alignItems='center'>
+            <Box mt={8} mb={8} flex='1' display='flex' flexDir='column' justifyContent='flex-start' alignItems='center'>
                 <Text fontSize='4xl' fontWeight='bold'>New Adventure</Text>
                 <Divider m={4} width='75%' />
                 <Box display='flex' flexDir="column" gap='1rem'>
@@ -23,7 +29,7 @@ export default function NewAdventure(){
                 <Text fontSize='4xl' mt={8} fontWeight='bold'>Setting</Text>
                 <Divider m={4} width='75%' />
                 <Box display='flex' flexDir="column" gap='1rem'>
-                    <Tabs onChange={(index) => setTabIndex(index)} variant='soft-rounded' >
+                    <Tabs onChange={onTabChange} variant='soft-rounded' >
                         <TabList gap='1rem'>
                             <Tab>Fantasy</Tab>
                             <Tab>Mystery</Tab>
@@ -34,7 +40,7 @@ export default function NewAdventure(){
                             <Tab>Custom</Tab>
                         </TabList>
                         <TabPanels>
-                            <TabPanel display='flex' flexDir='column' justifyContent='center' alignItems='center'>
+                            <TabPanel id="fantasy" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
                                 <Text fontSize='2xl'>Classes</Text>
                                 <Divider m={4} />
                                 <RadioGroup onChange={setClassValue} value={classValue}>
@@ -53,15 +59,87 @@ export default function NewAdventure(){
                                 </Stack>
                                 </RadioGroup>
                             </TabPanel>
-                            <TabPanel>
-                                <Text>Two</Text>
+                            <TabPanel id="mystery" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
+                            <Text fontSize='2xl'>Classes</Text>
+                                <Divider m={4} />
+                                <RadioGroup onChange={setClassValue} value={classValue}>
+                                <Stack>
+                                    <Radio value="1">Patient</Radio>
+                                    <Radio value="2">Detective</Radio>
+                                    <Radio value="3">Spy</Radio>
+                                    <Radio value="4">Doctor</Radio>
+                                    <Radio value="5">Nurse</Radio>
+                                    <Radio value="6">Police Officer</Radio>
+                                </Stack>
+                                </RadioGroup>
+                            </TabPanel>
+                            <TabPanel id="zombies" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
+                            <Text fontSize='2xl'>Classes</Text>
+                                <Divider m={4} />
+                                <RadioGroup onChange={setClassValue} value={classValue}>
+                                <Stack>
+                                    <Radio value="1">Survivor</Radio>
+                                    <Radio value="2">Scientist</Radio>
+                                    <Radio value="3">Soldier</Radio>
+                                    <Radio value="4">Zombie</Radio>
+                                    <Radio value="5">Medic</Radio>
+                                    <Radio value="6">Boss</Radio>
+                                </Stack>
+                                </RadioGroup>
+                            </TabPanel>
+                            <TabPanel id="apocalyptic" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
+                            <Text fontSize='2xl'>Classes</Text>
+                                <Divider m={4} />
+                                <RadioGroup onChange={setClassValue} value={classValue}>
+                                <Stack>
+                                    <Radio value="1">Survivor</Radio>
+                                    <Radio value="2">Scientist</Radio>
+                                    <Radio value="3">Soldier</Radio>
+                                    <Radio value="4">Infected</Radio>
+                                    <Radio value="5">Medic</Radio>
+                                    <Radio value="6">Mechanic</Radio>
+                                </Stack>
+                                </RadioGroup>
+                            </TabPanel>
+                            <TabPanel id="cyberpunk" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
+                            <Text fontSize='2xl'>Classes</Text>
+                                <Divider m={4} />
+                                <RadioGroup onChange={setClassValue} value={classValue}>
+                                <Stack>
+                                    <Radio value="1">Cyborg</Radio>
+                                    <Radio value="2">Robot</Radio>
+                                    <Radio value="3">Android</Radio>
+                                    <Radio value="4">Mechanic</Radio>
+                                    <Radio value="5">Programmer</Radio>
+                                    <Radio value="6">Engineer</Radio>
+                                    <Radio value="7">Security</Radio>
+                                </Stack>
+                                </RadioGroup>
+                            </TabPanel>
+                            <TabPanel id="isekai" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
+                            <Text fontSize='2xl'>Classes</Text>
+                                <Divider m={4} />
+                                <RadioGroup onChange={setClassValue} value={classValue}>
+                                <Stack>
+                                    <Radio value="1">Unemployed</Radio>
+                                    <Radio value="2">Student</Radio>
+                                    <Radio value="3">Teacher</Radio>
+                                    <Radio value="4">Lawyer</Radio>
+                                    
+
+                                </Stack>
+                                </RadioGroup>
+                            </TabPanel>
+                            <TabPanel id="custom" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
+                                <Text>Custom</Text>
                             </TabPanel>
                         </TabPanels>
                     </Tabs>
                 </Box>
                 <Divider m={4} width='75%' />
-                    <Text fontSize='4xl' m={4} fontWeight='bold'></Text>
-                    <Box></Box>
+                    <Box>
+                        <Button>Start Adventure</Button>
+                    </Box>
             </Box>
         </Box>
     )
