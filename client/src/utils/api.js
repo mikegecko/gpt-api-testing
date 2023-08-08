@@ -117,6 +117,21 @@ export const createNewConversation = async(newConvo, token) => {
   }
 }
 
+export const getConversation = async(conversationId, token) => {
+  try {
+    const res = await axios.get(`/api/chat/conversation/${conversationId}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    return res.data;
+  } catch(error){
+    console.error('Error getting conversation', error)
+  }
+}
+
 export const deleteConversation = async(conversationId, token) => {
   try {
     const res = await axios.delete(`/api/chat/conversation/${conversationId}`,
