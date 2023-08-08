@@ -11,6 +11,82 @@ export default function NewAdventure(){
     const [classValue, setClassValue] = useState(1)
 
 
+    const genres = [
+        {
+            id: "fantasy",
+            name: "Fantasy",
+            classes: [
+                "Knight","Warrior","Mage","Ranger","Bard","Thief","Cleric","Paladin","Druid","Rogue","Monk","Assassin",
+            ]
+        },
+        {
+            id: "mystery",
+            name: "Mystery",
+            classes: [
+                "Patient",
+                "Detective",
+                "Spy",
+                "Doctor",
+                "Nurse",
+                "Police Officer",
+            ]
+        },
+        {
+            id: "zombies",
+            name: "Zombies",
+            classes: [
+                "Survivor",
+                "Scientist",
+                "Soldier",
+                "Zombie",
+                "Medic",
+                "Boss",
+            ]
+        },
+        {
+            id: "apocalyptic",
+            name: "Apocalyptic",
+            classes: [
+                "Survivor",
+                "Scientist",
+                "Soldier",
+                "Infected",
+                "Medic",
+                "Mechanic",
+            ]
+        },
+        {
+            id: "cyberpunk",
+            name: "Cyberpunk",
+            classes: [
+                "Cyborg",
+                "Robot",
+                "Android",
+                "Mechanic",
+                "Programmer",
+                "Engineer",
+                "Security",
+            ]
+        },
+        {
+            id: "isekai",
+            name: "Isekai",
+            classes: [
+                "Unemployed",
+                "Student",
+                "Teacher",
+                "Lawyer",
+            ]
+        },
+        {
+            id: "custom",
+            name: "Custom",
+            classes: [
+                'test'
+            ]
+        },
+    ]
+
     const onTabChange = (index) => {
         setClassValue(null);
         (index) => setTabIndex(index)
@@ -31,108 +107,24 @@ export default function NewAdventure(){
                 <Box display='flex' flexDir="column" gap='1rem'>
                     <Tabs onChange={onTabChange} variant='soft-rounded' >
                         <TabList gap='1rem'>
-                            <Tab>Fantasy</Tab>
-                            <Tab>Mystery</Tab>
-                            <Tab>Zombies</Tab>
-                            <Tab>Apocalyptic</Tab>
-                            <Tab>Cyberpunk</Tab>
-                            <Tab>Isekai</Tab>
-                            <Tab>Custom</Tab>
+                            {genres.map(genre => (
+                                <Tab key={genre.id} id={genre.id} >{genre.name}</Tab>
+                            ))}
                         </TabList>
                         <TabPanels>
-                            <TabPanel id="fantasy" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
-                                <Text fontSize='2xl'>Classes</Text>
-                                <Divider m={4} />
-                                <RadioGroup onChange={setClassValue} value={classValue}>
-                                <Stack>
-                                    <Radio value="1">Warrior</Radio>
-                                    <Radio value="2">Mage</Radio>
-                                    <Radio value="3">Ranger</Radio>
-                                    <Radio value="4">Bard</Radio>
-                                    <Radio value="5">Thief</Radio>
-                                    <Radio value="6">Cleric</Radio>
-                                    <Radio value="7">Paladin</Radio>
-                                    <Radio value="8">Druid</Radio>
-                                    <Radio value="9">Rogue</Radio>
-                                    <Radio value="10">Monk</Radio>
-                                    <Radio value="11">Assassin</Radio>
-                                </Stack>
-                                </RadioGroup>
-                            </TabPanel>
-                            <TabPanel id="mystery" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
-                            <Text fontSize='2xl'>Classes</Text>
-                                <Divider m={4} />
-                                <RadioGroup onChange={setClassValue} value={classValue}>
-                                <Stack>
-                                    <Radio value="1">Patient</Radio>
-                                    <Radio value="2">Detective</Radio>
-                                    <Radio value="3">Spy</Radio>
-                                    <Radio value="4">Doctor</Radio>
-                                    <Radio value="5">Nurse</Radio>
-                                    <Radio value="6">Police Officer</Radio>
-                                </Stack>
-                                </RadioGroup>
-                            </TabPanel>
-                            <TabPanel id="zombies" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
-                            <Text fontSize='2xl'>Classes</Text>
-                                <Divider m={4} />
-                                <RadioGroup onChange={setClassValue} value={classValue}>
-                                <Stack>
-                                    <Radio value="1">Survivor</Radio>
-                                    <Radio value="2">Scientist</Radio>
-                                    <Radio value="3">Soldier</Radio>
-                                    <Radio value="4">Zombie</Radio>
-                                    <Radio value="5">Medic</Radio>
-                                    <Radio value="6">Boss</Radio>
-                                </Stack>
-                                </RadioGroup>
-                            </TabPanel>
-                            <TabPanel id="apocalyptic" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
-                            <Text fontSize='2xl'>Classes</Text>
-                                <Divider m={4} />
-                                <RadioGroup onChange={setClassValue} value={classValue}>
-                                <Stack>
-                                    <Radio value="1">Survivor</Radio>
-                                    <Radio value="2">Scientist</Radio>
-                                    <Radio value="3">Soldier</Radio>
-                                    <Radio value="4">Infected</Radio>
-                                    <Radio value="5">Medic</Radio>
-                                    <Radio value="6">Mechanic</Radio>
-                                </Stack>
-                                </RadioGroup>
-                            </TabPanel>
-                            <TabPanel id="cyberpunk" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
-                            <Text fontSize='2xl'>Classes</Text>
-                                <Divider m={4} />
-                                <RadioGroup onChange={setClassValue} value={classValue}>
-                                <Stack>
-                                    <Radio value="1">Cyborg</Radio>
-                                    <Radio value="2">Robot</Radio>
-                                    <Radio value="3">Android</Radio>
-                                    <Radio value="4">Mechanic</Radio>
-                                    <Radio value="5">Programmer</Radio>
-                                    <Radio value="6">Engineer</Radio>
-                                    <Radio value="7">Security</Radio>
-                                </Stack>
-                                </RadioGroup>
-                            </TabPanel>
-                            <TabPanel id="isekai" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
-                            <Text fontSize='2xl'>Classes</Text>
-                                <Divider m={4} />
-                                <RadioGroup onChange={setClassValue} value={classValue}>
-                                <Stack>
-                                    <Radio value="1">Unemployed</Radio>
-                                    <Radio value="2">Student</Radio>
-                                    <Radio value="3">Teacher</Radio>
-                                    <Radio value="4">Lawyer</Radio>
-                                    
-
-                                </Stack>
-                                </RadioGroup>
-                            </TabPanel>
-                            <TabPanel id="custom" display='flex' flexDir='column' justifyContent='center' alignItems='center'>
-                                <Text>Custom</Text>
-                            </TabPanel>
+                            {genres.map(genre => (
+                                <TabPanel key={genre.id} display='flex' flexDir='column' justifyContent='center' alignItems='center'>
+                                    <Text fontSize='2xl'>Classes</Text>
+                                    <Divider m={4} />
+                                    <RadioGroup onChange={setClassValue} value={classValue}>
+                                        <Stack>
+                                            {genre.classes.map((c, index) => (
+                                                <Radio value={index.toString()} key={index}>{c}</Radio>
+                                            ))}
+                                        </Stack>
+                                    </RadioGroup>
+                                </TabPanel>
+                            ))}
                         </TabPanels>
                     </Tabs>
                 </Box>
