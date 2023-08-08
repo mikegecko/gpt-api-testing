@@ -38,7 +38,7 @@ export default function Root() {
                 <Box>
                     <Button color={bg_text} backdropFilter='blur(4px)' variant='solid' as='a' rightIcon={<ArrowForwardIcon />} href="#">Get Started</Button>
                 </Box>
-                <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" mt={8} width='100%'>
+                <Box display={!loaderData.jwtValid ? 'none' : 'flex'} flexDirection="column" alignItems="center" justifyContent="center" mt={8} width='100%'>
                     <Box display='flex' flexDir='row' alignItems='center' justifyContent='center' width='100%' mb={4} gap={4}>
                     <TimeIcon boxSize={6}  />
                     <Text fontSize={{base: 'md', md: 'md', lg: 'xl'}} fontWeight='300' textAlign='center' >Recently Played</Text>
