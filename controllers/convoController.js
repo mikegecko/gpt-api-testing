@@ -18,10 +18,6 @@ module.exports = {
                 player: player,
                 settings: settings,
             }).save();
-            //Update user's convos array
-            const user = await User.findById(userid);
-            user.conversations.push(newConvo._id);
-            user.save();
             //Return the new conversation
             res.json(newConvo);
         } catch (error) {

@@ -98,7 +98,7 @@ export default function NewAdventure(){
         const classData = genre.classes[classIndex];
         const newConvo = {
             title: genre.name + " " + classData,
-            messages: null, //Put pre-prompts here
+            messages: [{role: "system", content: `You are a narrator in a text based adventure in the following genre, ${genre.name}, the player is a ${classData}.`}], //Put pre-prompts here
             player: null,
             settings: null,
         }
