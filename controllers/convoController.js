@@ -11,7 +11,7 @@ module.exports = {
             const userid = decoded.id;
             const {title, messages, player, settings} = req.body;
             //Create a new conversation with a valid userid and title
-            const newConvo = new Convo({
+            const newConvo = await new Convo({
                 title: title,
                 user: userid,
                 messages: messages,
