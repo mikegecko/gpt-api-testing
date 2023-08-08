@@ -1,6 +1,6 @@
 import { Box, Button, Input, Text } from "@chakra-ui/react";
 import { router } from "../main";
-import { decodeToken, gptChatCompletion, gptProxyChatCompletion, verify } from "../utils/api";
+import { decodeToken, getConversation, gptProxyChatCompletion, verify } from "../utils/api";
 import { useEffect, useRef, useState } from "react";
 import { ArrowForwardIcon} from "@chakra-ui/icons";
 import Sidebar from "../components/Sidebar";
@@ -18,7 +18,7 @@ export default function Adventure() {
     const location = useLocation();
     const convoId = location.pathname.split("/")[2] || null;
     // Rework this prompt
-    const systemMessage = "You are the controller of a text-based adventure game. Begin by populating the player data. Modify things like health and experience using the appropriate functions, call functions in succession if two or more values need updating"
+    //const systemMessage = "You are the controller of a text-based adventure game. Begin by populating the player data. Modify things like health and experience using the appropriate functions, call functions in succession if two or more values need updating"
     //const tokenInfoString = JSON.stringify(tokenInfo);
 
     const scrollToBottom = () => {
@@ -61,20 +61,35 @@ export default function Adventure() {
     }
 
     useEffect(() => {
-        const jwt = localStorage.getItem('gptapi-token');
+        const jwt = localStorage.getItem('gptapi-token'); //maybe use loader data to improve performance
         decodeToken(jwt).then(res => {setTokenInfo(res);})
 
-        const addSystemMessage = () => {
-            setMessages([...messages, {"role": "system", "content": systemMessage}]);
-        }
-        addSystemMessage();
+        // const addSystemMessage = () => {
+        //     setMessages([...messages, {"role": "system", "content": systemMessage}]);
+        // }
+        // addSystemMessage();
 
         //Load conversation
         const fetchConvo = async () => {
             if(convoId){
-                const convo = await getPost
+                const convo = await getConversation(convoId, loaderData.jwt);
+                return convo;
+            }
+            else{
+                return null;
             }
         }
+        const loadConvo = async () => {
+            const convo = await fetchConvo();
+            if(convo != null){
+                const messageArr = convo.messages;
+                setMessages(messageArr);
+            }
+            else{
+                setMessages([]);
+            }
+        }
+        loadConvo();
 
     },[])
 
