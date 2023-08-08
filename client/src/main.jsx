@@ -12,6 +12,7 @@ import theme from "./utils/theme";
 import "@fontsource-variable/inter";
 import Signup from "./routes/Signup";
 import NewAdventure, { newAdventureLoader } from "./routes/NewAdventure";
+import Adventure, { adventureLoader } from "./routes/Adventure";
 
 //Background image this is error 404 cant find the resource
 const darkbg = "url(assets/layered-steps.svg)";
@@ -46,6 +47,12 @@ export const router = createBrowserRouter([
     element: <NewAdventure />,
     errorElement: <ErrorPage />,
     loader: newAdventureLoader,
+  },
+  {
+    path: "/adventure/:id",
+    element: <Adventure />,
+    errorElement: <ErrorPage />,
+    loader: adventureLoader,
   },
 ]);
 
