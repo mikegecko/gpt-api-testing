@@ -103,8 +103,8 @@ export default function NewAdventure(){
             settings: null,
         }
         //Create a new convo in db
-        createNewConversation(newConvo, loaderData.jwt).then(res => { console.log(res); })
-        //Navigate to the new adventure -> url/adventure/:id?
+        //Navigate to the new adventure -> url/adventure/:id
+        createNewConversation(newConvo, loaderData.jwt).then(res => { console.log(res); router.navigate(`/adventure/${res._id}`); })
     }
 
     // useEffect(() => {
