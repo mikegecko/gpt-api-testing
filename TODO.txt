@@ -21,6 +21,7 @@ ________________________________________________
     ____________________________________________
         Client
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    🔴🔴🔴 Work on updating convo in db when user makes a gpt request and gets a response 🔴🔴🔴
     - Premium Currency:
         - 100 tokens for new users
         - 1 token every 15 minutes (100(actually 96) tokens every 24 hours)
@@ -66,22 +67,22 @@ ________________________________________________
         🟢 Signup
             🟡 mobile ui pass
             🟡 light/dark mode pass
-        🟢 NEW Dashboard
+        🟢 Dashboard
             🟢 Start new adventure -> navigate to /new
             🟡 Resume adventure -> list all adventures here. maybe include a search function
             🟡 Discover -> community created presets?
         🟢 New Adventure
             🟢 Title -> auto generate this
             🟢 Player name
-            🟢 Setting
-            🟢 Class (Based on setting)
+            ✅ Setting
+            ✅ Class (Based on setting)
             🟢 Advanced settings
                 🟢 temperature
                 🟢 memory
                 🟡 etc.
-        🟢 Dashboard -> This will become adventure/conversation -> new dashboard will show convos only along with profile, create new adventure, etc.
+        🟢 Adventure
             🟠 Add storing whole convos (store whole convo and only send truncated messages to API)
-            🟠 Add loading whole convos from DB (can select convo from sidebar or make a new one)
+            🟢 Add loading whole convos from DB (can select convo from sidebar or make a new one)
             ✅ add navigation back to home
             ✅ add open/close Sidebar - with animations
             ✅ add profile to bottom of Sidebar
