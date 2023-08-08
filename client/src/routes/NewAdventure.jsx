@@ -1,14 +1,14 @@
-import { Box, Button, Divider, Input, Radio, RadioGroup, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Divider, Input, Radio, RadioGroup, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from "@chakra-ui/react";
 import { router } from "../main";
 import { verify } from "../utils/api";
 import Header from "../components/Header";
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function NewAdventure(){
     const loaderData = useLoaderData();
     const [tabIndex, setTabIndex] = useState(0)
-    const [classValue, setClassValue] = useState(1)
+    const [classValue, setClassValue] = useState(null)
 
 
     const genres = [
@@ -89,8 +89,12 @@ export default function NewAdventure(){
 
     const onTabChange = (index) => {
         setClassValue(null);
-        (index) => setTabIndex(index)
+        setTabIndex(index);
     }
+
+    // useEffect(() => {
+    //     console.log("Radio value:", classValue );
+    // },[classValue])
 
     return(
         <Box display='flex' height='100%' minH='100vh' width='100%' flexDirection='column' backdropFilter='blur(100px)'>
@@ -129,13 +133,33 @@ export default function NewAdventure(){
                     </Tabs>
                 </Box>
                 <Divider m={4} width='75%' />
+                <Accordion mb={4} w='75%' allowMultiple>
+                    <AccordionItem>
+                        <h2>
+                            <AccordionButton>
+                                <Box as='span' flex='1' textAlign='left'>
+                                    Advanced
+                                </Box>
+                                <AccordionIcon />
+                            </AccordionButton>
+                        </h2>
+                        <AccordionPanel pb={4} display='flex' flexDir='column' justifyContent='center' alignItems='center'>
+                            <Box>
+                                <Text>Advanced Settings</Text>
+                            </Box>
+                            <Divider m={4} />
+                            <Box>
+                                <Input variant='' placeholder='Temperature' type="number"  />
+                            </Box>
+                        </AccordionPanel>
+                    </AccordionItem>
+                </Accordion>
                     <Box>
                         <Button>Start Adventure</Button>
                     </Box>
             </Box>
         </Box>
     )
-
 }
 
 export async function newAdventureLoader () {
