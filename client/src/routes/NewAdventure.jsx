@@ -1,6 +1,6 @@
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Divider, Input, Radio, RadioGroup, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from "@chakra-ui/react";
 import { router } from "../main";
-import { verify } from "../utils/api";
+import { createNewConversation, verify } from "../utils/api";
 import Header from "../components/Header";
 import { useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -92,6 +92,21 @@ export default function NewAdventure(){
         setTabIndex(index);
     }
 
+    const onNewAdventure = () => {
+        const genre = genres[tabIndex];
+        const classIndex = classValue;
+        const classData = genre.classes[classIndex];
+        const newConvo = {
+            title: genre.name + " " + classData,
+            messages: null, //Put pre-prompts here
+            player: null,
+            settings: null,
+        }
+        //Create a new convo in db
+        createNewConversation(newConvo, loaderData.jwt).then(res => { console.log(res); })
+        //Navigate to the new adventure -> url/adventure/:id?
+    }
+
     // useEffect(() => {
     //     console.log("Radio value:", classValue );
     // },[classValue])
@@ -155,7 +170,7 @@ export default function NewAdventure(){
                     </AccordionItem>
                 </Accordion>
                     <Box>
-                        <Button>Start Adventure</Button>
+                        <Button onClick={onNewAdventure}>Start Adventure</Button>
                     </Box>
             </Box>
         </Box>
