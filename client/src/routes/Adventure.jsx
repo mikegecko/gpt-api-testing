@@ -1,6 +1,6 @@
 import { Box, Button, Input, Text } from "@chakra-ui/react";
 import { router } from "../main";
-import { decodeToken, getConversation, gptProxyChatCompletion, verify } from "../utils/api";
+import { decodeToken, getConversation, gptProxyChatCompletion, updateConversation, verify } from "../utils/api";
 import { useEffect, useRef, useState } from "react";
 import { ArrowForwardIcon} from "@chakra-ui/icons";
 import Sidebar from "../components/Sidebar";
@@ -12,6 +12,7 @@ export default function Adventure() {
     const loaderData = useLoaderData();
     const [tokenInfo, setTokenInfo] = useState(null);
     const [input, setInput] = useState("");
+    const [convoData, setConvoData] = useState(null);
     const [response, setResponse] = useState(null);
     const [messages, setMessages] = useState([]);
     const messageContainerRef = useRef(null);
@@ -53,7 +54,7 @@ export default function Adventure() {
             }
         }
     }
-    // This should be done by tokens not my message length
+    // This should be done by tokens not my message length -> disabled until I figure out db handling
     const truncateMessages = (messageArr) => {
         if(messageArr.length > 20){
             return messageArr.slice(messageArr.length - 10, messageArr.length);
@@ -64,12 +65,7 @@ export default function Adventure() {
         const jwt = localStorage.getItem('gptapi-token'); //maybe use loader data to improve performance
         decodeToken(jwt).then(res => {setTokenInfo(res);})
 
-        // const addSystemMessage = () => {
-        //     setMessages([...messages, {"role": "system", "content": systemMessage}]);
-        // }
-        // addSystemMessage();
-
-        //Load conversation
+        //Load conversation data from db
         const fetchConvo = async () => {
             if(convoId){
                 const convo = await getConversation(convoId, loaderData.jwt);
@@ -82,6 +78,7 @@ export default function Adventure() {
         const loadConvo = async () => {
             const convo = await fetchConvo();
             if(convo != null){
+                setConvoData(convo);
                 const messageArr = convo.messages;
                 setMessages(messageArr);
             }
@@ -97,14 +94,9 @@ export default function Adventure() {
         if (messages.length > 0 && messages[messages.length - 1].role === "user") {
             // Only trigger the API call when the user's input is added to messages
             const userMessage = messages[messages.length - 1].content;
-            // gptChatCompletion(messages, tokenInfo.apiKey).then(res => {
-            //   addResponseToMessage(res, userMessage);
-            //   setResponse(res);
-            //   console.log(res);
-            // });
             gptProxyChatCompletion(messages, loaderData.jwt).then(res => {
                 console.log(res);
-                //Destructure the response
+                //Destructure the response -> structure responses better in server
                 if(res.choices !== undefined){
                     addResponseToMessage(res, userMessage);
                     setResponse(res);
@@ -116,10 +108,23 @@ export default function Adventure() {
             })
           }
           //If messages is too long, truncate it
-          if(messages.length > 20){
-            setMessages(truncateMessages(messages));
-          }
+        //   if(messages.length > 20){
+        //     setMessages(truncateMessages(messages));
+        //   }
           scrollToBottom(); //Scroll to bottom when new message is added
+        // Update conversation in db
+        if(convoId != null && convoData != null && messages != null && messages.length > 0){
+            if(convoData.messages.length === messages.length){
+                //Do nothing
+                console.log("No new messages");
+                return;
+            }
+            setConvoData(prevConvoData => {
+                const updatedConvoData = {...prevConvoData, messages: messages};
+                updateConversation(convoId, updatedConvoData, loaderData.jwt).then(res => {console.log(res);});
+                return updatedConvoData;
+            });
+        }
         console.log(messages);
     }, [messages])
 
