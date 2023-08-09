@@ -117,6 +117,27 @@ export const createNewConversation = async(newConvo, token) => {
   }
 }
 
+export const updateConversation = async(conversationId, updatedConvo, token) => {
+  try {
+    const res = await axios.put(`/api/chat/conversation/${conversationId}`,
+    {
+      title: updatedConvo.title,
+      messages: [...updatedConvo.messages],
+      player: updatedConvo.player ? updatedConvo.player : null,
+      settings: updatedConvo.settings ? updatedConvo.settings : null,
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    return res.data;
+  } catch(error){
+    console.error('Error updating conversation', error)
+  }
+}
+
 export const getConversation = async(conversationId, token) => {
   try {
     const res = await axios.get(`/api/chat/conversation/${conversationId}`,
