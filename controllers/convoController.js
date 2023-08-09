@@ -62,7 +62,8 @@ module.exports = {
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
             const userid = decoded.id;
             const convoId = req.params.id;
-            // Get new convo from request body
+            const {title, messages, player, settings} = req.body;
+            // Get updated convo from request body
             const convo = await Convo.findById(convoId);
             if (!convo) {
                 res.status(404).json({success: false, message: 'Conversation not found'});
@@ -70,10 +71,18 @@ module.exports = {
             if(convo.user != userid) {
                 res.status(401).json({success: false, message: 'Unauthorized'});
             }
-            //Update the conversation
-            // update here
-            convo.save();
-            res.json(convo);
+            else{
+                const newConvo = {
+                    title: title,
+                    messages: messages,
+                    player: player,
+                    settings: settings,
+                }
+                const options = {new: true};
+                //Update the conversation
+                const updatedConvo = await Convo.findByIdAndUpdate(convoId, newConvo, options);
+                res.json(updatedConvo);
+            }
         }
         catch{
             console.log(error);
