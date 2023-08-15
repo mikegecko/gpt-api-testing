@@ -54,6 +54,9 @@ export default function Sidebar(props) {
     router.navigate("/");
   };
 
+  const newGameEvent = (e) => {
+    router.navigate('/new');
+  }
 
   return (
     <Box height="100%" display="flex">
@@ -106,6 +109,7 @@ export default function Sidebar(props) {
                     gap={2}
                     alignItems="center"
                     leftIcon={<AddIcon />}
+                    onClick={newGameEvent}
                   >
                     New Game
                   </Button>
