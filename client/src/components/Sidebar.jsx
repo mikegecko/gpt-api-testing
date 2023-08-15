@@ -26,6 +26,7 @@ import { router } from "../main";
 import ProfileModal from "./ProfileModal";
 import { useState } from "react";
 import SettingsModal from './SettingsModal';
+import { PlayIcon } from './PlayIcon';
 
 export default function Sidebar(props) {
   const { isOpen, onToggle } = useDisclosure();
@@ -56,6 +57,10 @@ export default function Sidebar(props) {
 
   const newGameEvent = (e) => {
     router.navigate('/new');
+  }
+
+  const openConvoEvent = (e) => {
+    //Get the ID of the convo and navigate to it
   }
 
   return (
@@ -113,12 +118,27 @@ export default function Sidebar(props) {
                   >
                     New Game
                   </Button>
+                  
                   <IconButton
                     onClick={onToggle}
                     aria-label="close sidebar"
                     icon={<ArrowLeftIcon />}
                     variant="outline"
                   />
+                </Box>
+                <Box display='flex' flexDir='column' m={2} gap={2} pr='48px'>
+                <Button
+                    display="flex"
+                    justifyContent="flex-start"
+                    variant="outline"
+                    gap={2}
+                    alignItems="center"
+                    leftIcon={<PlayIcon />}
+                    onClick={openConvoEvent}
+                  >
+                    Convo Title Here
+                  </Button>
+                  
                 </Box>
               </Box>
               <Box display="flex" flexDir="column" gap={2}>
