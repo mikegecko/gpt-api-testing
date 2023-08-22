@@ -2,13 +2,15 @@ import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPane
 import { router } from "../main";
 import { createNewConversation, verify } from "../utils/api";
 import Header from "../components/Header";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function NewAdventure(){
     const loaderData = useLoaderData();
     const [tabIndex, setTabIndex] = useState(0)
-    const [classValue, setClassValue] = useState(null)
+    const [classValue, setClassValue] = useState(null);
+    const [adventureTitle, setAdventureTitle] = useState(null);
+    const [playerName, setPlayerName] = useState(null);
 
 
     const genres = [
@@ -216,6 +218,7 @@ export async function newAdventureLoader () {
                     jwt: jwt,
                 })
             }
+            
         } catch (error) {
             console.log(error);
             //Token is invalid

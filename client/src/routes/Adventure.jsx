@@ -69,9 +69,16 @@ export default function Adventure() {
         const fetchConvo = async () => {
             if(convoId){
                 const convo = await getConversation(convoId, loaderData.jwt);
-                return convo;
+                if(convo === undefined){
+                    //Navigate to error page
+                    return null;
+                }
+                else{
+                    return convo;
+                }
             }
             else{
+                // No ConvoID -> navigate to error page
                 return null;
             }
         }

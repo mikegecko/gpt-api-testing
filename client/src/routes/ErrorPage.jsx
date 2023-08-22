@@ -1,6 +1,8 @@
 import { Box, Button, Heading, Text } from "@chakra-ui/react";
+import { useRouteError } from "react-router-dom";
 
 export default function ErrorPage() {
+    const error = useRouteError();
     return(
         <Box width='100vw' height='100vh' display="flex" flexDir="column" justifyContent="center" alignItems="center" backdropFilter='blur(100px)'>
             <Text fontSize='lg' fontWeight='semibold' color='brand.600'>404</Text>
