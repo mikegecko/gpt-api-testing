@@ -150,6 +150,7 @@ ________________________________________________
                      BUGS
 ________________________________________________
 
+    ❌ Can load into adventure route with invalid convo id's
     ❌ Radio buttons stay checked between tabs in new adventure
     ✅ I dont like how the sidebar on the dashboard jumps out when it first loads | Solved: AnimatePresence initialLoad={false}
     ❌ LLM loses context after truncation of long message chains, try adding system message back in as first message.
