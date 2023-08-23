@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { router } from "../main";
-import { createNewConversation, decodeToken, verify } from "../utils/api";
+import { createNewConversation, decodeToken, getConversationIds, verify } from "../utils/api";
 import { useLoaderData } from "react-router-dom";
 import { Box, Divider, Text } from "@chakra-ui/react";
 import Header from "../components/Header";
@@ -10,7 +10,7 @@ export default function Dashboard() {
     const loaderData = useLoaderData();
     const [tokenInfo, setTokenInfo] = useState(null);
     const [newConvo, setNewConvo] = useState(null); 
-
+    const [convoIds, setConvoIds] = useState([]);
     const newAdventure = () => {
         //console.log("New Adventure");
         // const newConvo = {
@@ -28,6 +28,11 @@ export default function Dashboard() {
     useEffect(() => {
         const jwt = localStorage.getItem('gptapi-token');
         decodeToken(jwt).then(res => {setTokenInfo(res)});
+
+        const getConvoIds = async () => {
+            getConversationIds(loaderData.jwt).then(res => {setConvoIds(res)});
+        }
+        getConvoIds();
     },[])
 
     return(
@@ -41,8 +46,9 @@ export default function Dashboard() {
                 <Text fontSize='2xl' mt={8}>Previous Adventures</Text>
                 <Divider />
                 <Box display='grid' gridTemplateColumns={{base: '1fr', lg: '1fr 1fr'}} mt={4} flexDir='row' flexGrow='1' justifyContent='flex-start' alignItems='flex-start' padding='1rem' gap='2rem'>
-                    <AdventureCard title="Adventure 1" onClick={newAdventure}  />
-                    <AdventureCard title="Adventure 2" onClick={resumeAdventure}  />
+                    {convoIds.map((convoId, index) => {
+                        return(<AdventureCard key={index} id={convoId} title={convoId} onClick={resumeAdventure} />)
+                    })}
                 </Box>
             </Box>
         </Box>
