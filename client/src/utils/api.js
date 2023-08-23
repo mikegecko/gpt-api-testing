@@ -153,6 +153,21 @@ export const getConversation = async(conversationId, token) => {
   }
 }
 
+export const getConversationIds = async(token) => {
+  try {
+    const res = await axios.get('/api/chat/conversationids',
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    return res.data;
+  } catch (error) {
+    console.error('Error getting conversation ids', error)
+  }
+}
+
 export const deleteConversation = async(conversationId, token) => {
   try {
     const res = await axios.delete(`/api/chat/conversation/${conversationId}`,
