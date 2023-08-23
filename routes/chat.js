@@ -12,6 +12,8 @@ router.post('/conversation', authController.verifyToken, convoController.createC
 router.get('/conversation/:id', authController.verifyToken, convoController.getConvo);
 //Get all user conversations
 router.get('/conversation', authController.verifyToken, convoController.getCovosByUser);
+//Get all conversation ids by user
+router.get('/conversationids', authController.verifyToken, convoController.getConvoIDsByUser);
 //Update a conversation by id
 router.put('/conversation/:id', authController.verifyToken, convoController.updateConvo);
 //Delete a conversation by id

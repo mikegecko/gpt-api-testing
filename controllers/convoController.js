@@ -37,6 +37,20 @@ module.exports = {
             res.status(500).json({success: false, message: 'Internal server error'});
         }
     },
+    getConvoIDsByUser: async (req, res) => {
+        try {
+            const token = req.headers.authorization.split(' ')[1];
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const userid = decoded.id;
+            const convos = await Convo.find({user: userid}, '_id',);
+            //Extract the ids from the convos
+            const convoIds = convos.map(convo => convo._id);
+            res.json(convoIds);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({success: false, message: 'Internal server error'});
+        }
+    },
     getConvo: async (req, res) => {
         try {
             const token = req.headers.authorization.split(' ')[1];
