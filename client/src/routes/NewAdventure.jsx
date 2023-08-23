@@ -120,8 +120,8 @@ export default function NewAdventure(){
                 <Text fontSize='4xl' fontWeight='bold'>New Adventure</Text>
                 <Divider m={4} width='75%' />
                 <Box display='flex' flexDir="column" gap='1rem'>
-                    <Input variant='' placeholder='Adventure Title' />
-                    <Input variant='' placeholder='Player Name' />
+                    <Input variant='' placeholder='Adventure Title' value={adventureTitle} onChange={(e) => setAdventureTitle(e.target.value)} />
+                    <Input variant='' placeholder='Player Name' value={playerName} onChange={(e) => setPlayerName(e.target.value)} />
                 </Box>
                 <Text fontSize='4xl' mt={8} fontWeight='bold'>Setting</Text>
                 <Divider m={4} width='75%' />
