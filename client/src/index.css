@@ -35,9 +35,9 @@ body {
   width: 100%;
   min-height: 100vh;
   background-image: url(assets/layered-steps.svg);
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto;
 }
 
 .circle-bg{

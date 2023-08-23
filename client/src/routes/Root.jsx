@@ -25,7 +25,7 @@ export default function Root() {
     "https://images.pexels.com/photos/777059/pexels-photo-777059.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",]
 
     return(
-        <Box display='flex' height='100%' width='100%' flexDirection='column' backdropFilter='blur(100px)' >
+        <Box display='flex'minHeight='100vh' height='100%' width='100%' flexDirection='column' backdropFilter='blur(100px)' >
             <Header jwtValid={loaderData.jwtValid} />
             <Box zIndex={10} flex='1' display='flex' alignItems='center' justifyContent='flex-start' flexDirection='column' mt={4} >
                 <ImageCarousel images={images} />
