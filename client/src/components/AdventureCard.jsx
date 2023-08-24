@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
-export default function AdventureCard({ onClick, title, description }) {
+export default function AdventureCard({ onClick, title, description, id }) {
   const theme = useTheme();
 
 
@@ -42,8 +42,9 @@ export default function AdventureCard({ onClick, title, description }) {
     flexDirection: "column",
   };
   return (
-    <motion.div initial='initial' whileHover='hover' onClick={onClick} style={{cursor: 'pointer'}} >
+    <motion.div id={id} initial='initial' whileHover='hover' onClick={onClick} style={{cursor: 'pointer'}} >
       <Box
+      id={id}
         display={{base: 'flex', lg: 'flex'}}
         height={{base: '100%', lg: '300px'}}
         width={{base: '100%', lg: '300px'}}
@@ -70,4 +71,5 @@ AdventureCard.propTypes = {
   title: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   description: PropTypes.string,
+  id: PropTypes.string,
 };

@@ -21,8 +21,9 @@ export default function Dashboard() {
         router.navigate('/new');
     }
 
-    const resumeAdventure = () => {
-        console.log("resume Adventure");
+    const resumeAdventure = (e) => {
+        console.log(`Resume adventure ${e.target.id}`);
+        router.navigate(`/adventure/${e.target.id}`);
     }
 
     useEffect(() => {
